@@ -1,15 +1,114 @@
+@bz-txt-gray : rgb(84, 85, 85);
+
+html, body, .container-fluid, .row-fluid {
+  height: 100%;
+}
+
 body{
+  margin: 0px;
   font-family: "Raleway", Arial, sans-serif;
 
   #siteContainer {
+
     .row-fluid {
-      #sidebar{
-        font-size: 48px;
-        color: rgb(84, 85, 85);
+
+      #sidebar-container{
+        height: 100%;
+        max-width: 320px;
+
+        #sidebar{
+        font-size: 2.8vw;
+        color: @bz-txt-gray;
         position: fixed;
         top: 0px;
         height: 100%;
-        font-weight: 200;
+        font-weight: 100;
+        left: 0px;
+        width: inherit;
+        max-width: inherit;
+        padding: 60px 0px;
+
+        .line {
+          height: 95%;
+          width: 1px;
+          float: right;
+          background-color: #bebebe;
+        }
+
+       .myName {
+          width: 80%;
+          margin: auto;
+        }
+      }
+      }
+
+      #content-container {
+        padding: 50px 0px;
+
+        .content {
+          margin-left: 20px;
+
+          .opening-quote {
+            letter-spacing: 0.7px;
+            font-size: 4vw;
+            color: #313131;
+            font-weight: 100;
+            font-style: italic;
+            width: 80%;
+          }
+
+          .source {
+            color: #2c2d2d;
+            font-size: 1.7vw;
+            font-weight: 400;
+            padding-top: 2%;
+          }
+
+          .buttons-container {
+            width: 80%;
+            margin: auto;
+            margin-top: 85px;
+
+
+            .btnContainer {
+              float: right;
+              width: 50%;
+              &.left {
+                float: left;
+              }
+
+              .inline-btn {
+                transition: all 0.3s ease-out;
+                display: inline-block;
+                padding: 15px 20px;
+                border: solid 1px;
+                cursor: pointer;
+                font-size: 3vw;
+                font-weight: 200;
+
+                &.blue-btn {
+                  color: rgb(0, 128, 255);
+                  border-color: rgb(0, 128, 255);
+
+                  &:hover {
+                    color: white;
+                    background-color: rgb(0, 128, 255);
+                  }
+                }
+
+                &.red-btn {
+                  color: rgb(255, 102, 102);
+                  border-color: rgb(255, 102, 102);
+
+                  &:hover {
+                    color: white;
+                    background-color: rgb(255, 102, 102);
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }

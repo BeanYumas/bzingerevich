@@ -1,11 +1,93 @@
+html,
+body,
+.container-fluid,
+.row-fluid {
+  height: 100%;
+}
 body {
+  margin: 0px;
   font-family: "Raleway", Arial, sans-serif;
 }
-body #siteContainer .row-fluid #sidebar {
-  font-size: 48px;
+body #siteContainer .row-fluid #sidebar-container {
+  height: 100%;
+  max-width: 320px;
+}
+body #siteContainer .row-fluid #sidebar-container #sidebar {
+  font-size: 2.8vw;
   color: #545555;
   position: fixed;
   top: 0px;
   height: 100%;
+  font-weight: 100;
+  left: 0px;
+  width: inherit;
+  max-width: inherit;
+  padding: 60px 0px;
+}
+body #siteContainer .row-fluid #sidebar-container #sidebar .line {
+  height: 95%;
+  width: 1px;
+  float: right;
+  background-color: #bebebe;
+}
+body #siteContainer .row-fluid #sidebar-container #sidebar .myName {
+  width: 80%;
+  margin: auto;
+}
+body #siteContainer .row-fluid #content-container {
+  padding: 50px 0px;
+}
+body #siteContainer .row-fluid #content-container .content {
+  margin-left: 20px;
+}
+body #siteContainer .row-fluid #content-container .content .opening-quote {
+  letter-spacing: 0.7px;
+  font-size: 4vw;
+  color: #313131;
+  font-weight: 100;
+  font-style: italic;
+  width: 80%;
+}
+body #siteContainer .row-fluid #content-container .content .source {
+  color: #2c2d2d;
+  font-size: 1.7vw;
+  font-weight: 400;
+  padding-top: 2%;
+}
+body #siteContainer .row-fluid #content-container .content .buttons-container {
+  width: 80%;
+  margin: auto;
+  margin-top: 85px;
+}
+body #siteContainer .row-fluid #content-container .content .buttons-container .btnContainer {
+  float: right;
+  width: 50%;
+}
+body #siteContainer .row-fluid #content-container .content .buttons-container .btnContainer.left {
+  float: left;
+}
+body #siteContainer .row-fluid #content-container .content .buttons-container .btnContainer .inline-btn {
+  transition: all 0.3s ease-out;
+  display: inline-block;
+  padding: 15px 20px;
+  border: solid 1px;
+  cursor: pointer;
+  font-size: 3vw;
   font-weight: 200;
+}
+body #siteContainer .row-fluid #content-container .content .buttons-container .btnContainer .inline-btn.blue-btn {
+  color: #0080ff;
+  border-color: #0080ff;
+}
+body #siteContainer .row-fluid #content-container .content .buttons-container .btnContainer .inline-btn.blue-btn:hover {
+  color: white;
+  background-color: #0080ff;
+}
+body #siteContainer .row-fluid #content-container .content .buttons-container .btnContainer .inline-btn.red-btn {
+  color: #ff6666;
+  border-color: #ff6666;
+}
+body #siteContainer .row-fluid #content-container .content .buttons-container .btnContainer .inline-btn.red-btn:hover {
+  color: white;
+  background-color: #ff6666;
 }
