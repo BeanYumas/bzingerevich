@@ -37,10 +37,10 @@ body #siteContainer .row-fluid #sidebar-container #sidebar .myName {
 body #siteContainer .row-fluid #content-container {
   padding: 50px 0px;
 }
-body #siteContainer .row-fluid #content-container .content {
+body #siteContainer .row-fluid #content-container .lp {
   margin-left: 20px;
 }
-body #siteContainer .row-fluid #content-container .content .opening-quote {
+body #siteContainer .row-fluid #content-container .lp .opening-quote {
   letter-spacing: 0.7px;
   font-size: 4vw;
   color: #313131;
@@ -48,25 +48,25 @@ body #siteContainer .row-fluid #content-container .content .opening-quote {
   font-style: italic;
   width: 80%;
 }
-body #siteContainer .row-fluid #content-container .content .source {
+body #siteContainer .row-fluid #content-container .lp .source {
   color: #2c2d2d;
   font-size: 1.7vw;
   font-weight: 400;
   padding-top: 2%;
 }
-body #siteContainer .row-fluid #content-container .content .buttons-container {
+body #siteContainer .row-fluid #content-container .lp .buttons-container {
   width: 80%;
   margin: auto;
-  margin-top: 85px;
+  margin-top: 20%;
 }
-body #siteContainer .row-fluid #content-container .content .buttons-container .btnContainer {
+body #siteContainer .row-fluid #content-container .lp .buttons-container .btnContainer {
   float: right;
   width: 50%;
 }
-body #siteContainer .row-fluid #content-container .content .buttons-container .btnContainer.left {
+body #siteContainer .row-fluid #content-container .lp .buttons-container .btnContainer.left {
   float: left;
 }
-body #siteContainer .row-fluid #content-container .content .buttons-container .btnContainer .inline-btn {
+body #siteContainer .row-fluid #content-container .lp .buttons-container .btnContainer .inline-btn {
   transition: all 0.3s ease-out;
   display: inline-block;
   padding: 15px 20px;
@@ -75,19 +75,19 @@ body #siteContainer .row-fluid #content-container .content .buttons-container .b
   font-size: 3vw;
   font-weight: 200;
 }
-body #siteContainer .row-fluid #content-container .content .buttons-container .btnContainer .inline-btn.blue-btn {
+body #siteContainer .row-fluid #content-container .lp .buttons-container .btnContainer .inline-btn.blue-btn {
   color: #0080ff;
   border-color: #0080ff;
 }
-body #siteContainer .row-fluid #content-container .content .buttons-container .btnContainer .inline-btn.blue-btn:hover {
+body #siteContainer .row-fluid #content-container .lp .buttons-container .btnContainer .inline-btn.blue-btn:hover {
   color: white;
   background-color: #0080ff;
 }
-body #siteContainer .row-fluid #content-container .content .buttons-container .btnContainer .inline-btn.red-btn {
+body #siteContainer .row-fluid #content-container .lp .buttons-container .btnContainer .inline-btn.red-btn {
   color: #ff6666;
   border-color: #ff6666;
 }
-body #siteContainer .row-fluid #content-container .content .buttons-container .btnContainer .inline-btn.red-btn:hover {
+body #siteContainer .row-fluid #content-container .lp .buttons-container .btnContainer .inline-btn.red-btn:hover {
   color: white;
   background-color: #ff6666;
 }
