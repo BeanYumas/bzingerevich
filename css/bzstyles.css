@@ -34,8 +34,31 @@ body #siteContainer .row-fluid #sidebar-container #sidebar .myName {
   width: 80%;
   margin: auto;
 }
+body #siteContainer .row-fluid #sidebar-container #sidebar .menu {
+  width: 80%;
+  margin: auto;
+  padding-top: 30%;
+}
+body #siteContainer .row-fluid #sidebar-container #sidebar .menu .mItem {
+  padding: 20px 0px;
+  cursor: pointer;
+}
+body #siteContainer .row-fluid #sidebar-container #sidebar .menu .mItem .selectionbar {
+  transition: all 0.3s ease-out;
+  position: relative;
+  width: 80%;
+  background: transparent;
+  top: 10px;
+  height: 2px;
+}
+body #siteContainer .row-fluid #sidebar-container #sidebar .menu .mItem.selected .selectionbar {
+  background: #0080ff;
+}
+body #siteContainer .row-fluid #sidebar-container #sidebar .menu .mItem:hover:not(.selected) .selectionbar {
+  background: #C9E0F6;
+}
 body #siteContainer .row-fluid #content-container {
-  padding: 50px 0px;
+  padding-top: 60px;
 }
 body #siteContainer .row-fluid #content-container .lp {
   margin-left: 20px;
@@ -90,4 +113,59 @@ body #siteContainer .row-fluid #content-container .lp .buttons-container .btnCon
 body #siteContainer .row-fluid #content-container .lp .buttons-container .btnContainer .inline-btn.red-btn:hover {
   color: white;
   background-color: #ff6666;
+}
+body #siteContainer .row-fluid #content-container .myResume {
+  color: #545555;
+  width: 70%;
+}
+body #siteContainer .row-fluid #content-container .myResume .myProfile {
+  height: 125px;
+  margin-bottom: 50px;
+  position: relative;
+}
+body #siteContainer .row-fluid #content-container .myResume .myProfile .myImage {
+  height: 125px;
+  width: 125px;
+  background-image: url('../images/benny.jpg');
+  border-radius: 10px;
+  background-position: center;
+  background-size: contain;
+}
+body #siteContainer .row-fluid #content-container .myResume .myProfile .links {
+  bottom: 0px;
+  position: absolute;
+  left: 155px;
+}
+body #siteContainer .row-fluid #content-container .myResume .myProfile .links a {
+  text-decoration: underline;
+  color: #545555;
+  display: block;
+  font-size: 1.4vw;
+  font-weight: 200;
+  padding-top: 35px;
+}
+body #siteContainer .row-fluid #content-container .myResume .resumeEntry {
+  padding-bottom: 30px;
+}
+body #siteContainer .row-fluid #content-container .myResume .resumeEntry p {
+  margin-top: 0px;
+}
+body #siteContainer .row-fluid #content-container .myResume .resumeEntry .header {
+  font-weight: 300;
+  font-size: 2vw;
+  padding-bottom: 30px;
+}
+body #siteContainer .row-fluid #content-container .myResume .resumeEntry .content {
+  font-weight: 300;
+  font-size: 1.4vw;
+  line-height: 1.9vw;
+}
+body #siteContainer .row-fluid #content-container .myResume .resumeEntry .content .skill {
+  padding-bottom: 20px;
+}
+body #siteContainer .row-fluid #content-container .myResume .resumeEntry .content .skill .skill-name {
+  width: 20%;
+  display: inline-block;
+  float: left;
+  margin-right: 10%;
 }

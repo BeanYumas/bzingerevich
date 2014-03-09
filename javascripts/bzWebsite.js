@@ -11,33 +11,29 @@
 
 
        init: function() {
-           bzWebsite.views.lp = $('.lp').contentView();
-           $('#blue-btn-welcome').click(function() {
-               bzWebsite.views.experience = bzWebsite.createView("experience");
-               $('#content-container').append(bzWebsite.views.experience);
-               bzWebsite.views.lp.fadeOut( function() {
-                   bzWebsite.views.lp.remove();
-               });
-           });
+           bzWebsite.views.sideBar = new sideBar(this);
+           bzWebsite.views.sideBar.render("#sidebar-container");
+           bzWebsite.views.sideBar.hideMenu();
+
+           bzWebsite.views.contentView = new contentView(this);
+           bzWebsite.views.contentView.render();
        },
 
-       createView: function(viewType) {
-           var createdView;
-           switch (viewType) {
-               case "experience":
-                   createdView = $("<div class='experience'>" +
-                       "<div class='header'>{experience}</div><div class='content'>{experienceContent}</div>" +
-                       "<div class='header'>{skills}</div><div class='content'>{skillsContent}</div>" +
-                       "<div class='header'>{education}</div><div class='content'>{educationContent}</div>" +
-                       "</div>");
-                   break;
-               case "portfolioList":
-                   break;
-               case "portfolioEntry":
-                   break;
-           }
-
-           return createdView;
-       }
+        replaceContentView: function(toView) {
+            bzWebsite.views.sideBar.showMenu();
+            switch (toView) {
+                case "WhoAmI":
+                    createdView = $("<div class='experience'>" +
+                        "<div class='header'>{experience}</div><div class='content'>{experienceContent}</div>" +
+                        "<div class='header'>{skills}</div><div class='content'>{skillsContent}</div>" +
+                        "<div class='header'>{education}</div><div class='content'>{educationContent}</div>" +
+                        "</div>");
+                    break;
+                case "portfolioList":
+                    break;
+                case "portfolioEntry":
+                    break;
+            }
+        }
     }
 })(jQuery);
