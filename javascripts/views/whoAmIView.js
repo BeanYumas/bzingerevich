@@ -38,7 +38,7 @@ var whoAmIView = View.extend({
 
     render: function() {
         var self = this;
-        self.content =  $("<div class='myResume'><div class='myProfile'><div class='myImage'></div><div class='links'>" +
+        self.content =  $("<div class='my-resume contentView'><div class='myProfile'><div class='myImage'></div><div class='links'>" +
             "<a href='http://il.linkedin.com/pub/benny-zingerevich/38/102/164/' target='_blank'>LinkedIn Profile</a>" +
             "<a href='./files/benny_cv.pdf' download='benny_cv.pdf'>Download Print Version</a></div></div></div>");
         $.each(self.myResume, function(entryName, entryValue) {

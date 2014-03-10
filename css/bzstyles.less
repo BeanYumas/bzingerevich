@@ -78,6 +78,7 @@ body{
 
       #content-container {
         padding-top: 60px;
+        position: relative;
 
         .lp {
           margin-left: 20px;
@@ -144,7 +145,7 @@ body{
           }
         }
 
-        .myResume {
+        .my-resume {
           color: @bz-txt-gray;
           width: 70%;
 
@@ -206,6 +207,51 @@ body{
                   margin-right: 10%;
                 }
               }
+            }
+          }
+        }
+
+        .my-work-list {
+          color: @bz-txt-gray;
+
+          .work-entry {
+            margin-bottom: 80px;
+
+            &:hover {
+              cursor: pointer;
+
+              .my-work-preview-img {
+                  box-shadow: 1px 1px 15px rgb(73, 73, 73);
+              }
+
+              .header {
+                color: @bz-blue;
+                text-decoration: underline;
+              }
+            }
+
+
+            .my-work-preview-img {
+              transition: all 0.2s ease-out;
+              padding: 5px;
+              border-radius: 4px;
+
+               img {
+                 position: relative;
+                 width: 100%;
+               }
+             }
+
+            .header {
+              transition: all 0.2s ease-out;
+              font-size: 2vw;
+              padding-bottom: 20px;
+            }
+
+            .my-work-preview-text {
+              line-height: 2vw;
+              font-size: 1.2vw;
+              width: 80%;
             }
           }
         }

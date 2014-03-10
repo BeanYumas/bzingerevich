@@ -11,8 +11,8 @@ var contentView = View.extend({
         this.controller = controller;
         this.allViews = {
             'welcomeView' : new welcomeView(this),
-            'WhoAmI'      : new whoAmIView(this)
-//            'myWork'      : new myWorkView(this)
+            'whoAmI'      : new whoAmIView(this),
+            'myWork'      : new myWorkList(this)
         };
         this.currView = this.allViews.welcomeView;
     },
@@ -21,28 +21,48 @@ var contentView = View.extend({
         $('#content-container').append(this.currView.render());
     },
 
-    replaceContent: function(toView) {
+    replaceContent: function(toView, animation) {
         var self = this;
-        self.controller.replaceContentView(toView);
         var currViewRendered = $('#content-container').children();
-        currViewRendered.fadeOut(400, function() {
-            self.currView = self.allViews[toView];
-            var newViewRendered = self.currView.render();
-            newViewRendered.fadeOut();
-            $('#content-container').append(newViewRendered);
-            newViewRendered.fadeIn(400);
-            currViewRendered.remove();
+        self.currView = self.allViews[toView];
+        var newViewRendered = self.currView.render();
+
+        switch(animation) {
+            case 'fadeOut' :
+               self.fadeReplacement(currViewRendered, newViewRendered);
+               break;
+            case 'hideLeft':
+                self.hideLeft(currViewRendered, newViewRendered);
+                break;
+            default:
+                self.fadeReplacement(currViewRendered, newViewRendered);
+                break;
+        }
+
+        self.controller.contentViewReplaced(toView);
+    },
+
+    fadeReplacement: function(currView, nextView) {
+        nextView.css("display", "none");
+        currView.fadeOut(300, function() {
+            $('#content-container').append(nextView);
+            nextView.fadeIn(300);
+            currView.remove();
         });
     },
 
-    hideLeft: function(callback) {
-        var prevLeft = this.position().left;
-        this.css({position:"relative"});
-        this.animate({left: -1.5*this.width()}, 300, "swing", function() {
-            this.hide();
-            this.css({left: prevLeft});
-            callback();
-        })
+    hideLeft: function(currView, nextView) {
+        var container = $('#content-container')
+        var contentViewWidth = container.width();
+        nextView.hide().css({left: contentViewWidth});
+        container.append(nextView);
+        currView.animate({left: contentViewWidth}, 300, "swing", function() {
+            currView.hide();
+            currView.remove()
+        });
+
+        nextView.show();
+        nextView.animate({left: 0}, 300, "swing");
     },
 
     hideRight: function(callback) {

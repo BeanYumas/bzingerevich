@@ -20,20 +20,12 @@
        },
 
         replaceContentView: function(toView) {
-            bzWebsite.views.sideBar.showMenu();
-            switch (toView) {
-                case "WhoAmI":
-                    createdView = $("<div class='experience'>" +
-                        "<div class='header'>{experience}</div><div class='content'>{experienceContent}</div>" +
-                        "<div class='header'>{skills}</div><div class='content'>{skillsContent}</div>" +
-                        "<div class='header'>{education}</div><div class='content'>{educationContent}</div>" +
-                        "</div>");
-                    break;
-                case "portfolioList":
-                    break;
-                case "portfolioEntry":
-                    break;
-            }
+            bzWebsite.views.contentView.replaceContent(toView);
+        },
+
+        contentViewReplaced: function(newView) {
+            bzWebsite.views.sideBar.showMenu(newView);
         }
+
     }
 })(jQuery);

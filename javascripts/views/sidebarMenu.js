@@ -22,13 +22,14 @@ var sideBarMenu = View.extend({
     render: function() {
         var self = this;
         var menus = $("<div></div>");
+        var mItem;
         for (var item in self.menuItems) {
-            var mItem = $("<div class='mItem'>" + self.menuItems[item].text + "<div class='selectionbar'></div></div>");
-            mItem.id = item;
+            mItem = $("<div class='mItem'>" + self.menuItems[item].text + "<div class='selectionbar'></div></div>");
+            mItem.attr("id", item);
             mItem.click(function(){
                 $('.mItem').removeClass('selected');
                 $(this).addClass('selected');
-                self.menuItems[item].click();
+                self.menuItems[$(this).attr('id')].click();
             });
             menus.append(mItem);
         }

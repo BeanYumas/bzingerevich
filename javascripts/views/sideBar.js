@@ -44,9 +44,15 @@ var sideBar = View.extend({
       $('.menu', this.content).fadeOut(0);
     },
 
-    showMenu: function () {
+    showMenu: function (selectedView) {
+        var self = this;
+
         if($('.menu').is(":hidden")){
             $('.menu', this.content).fadeIn();
+        }
+
+        if(selectedView) {
+            self.setSelectedMenu(selectedView);
         }
     },
 

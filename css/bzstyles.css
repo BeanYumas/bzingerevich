@@ -59,6 +59,7 @@ body #siteContainer .row-fluid #sidebar-container #sidebar .menu .mItem:hover:no
 }
 body #siteContainer .row-fluid #content-container {
   padding-top: 60px;
+  position: relative;
 }
 body #siteContainer .row-fluid #content-container .lp {
   margin-left: 20px;
@@ -114,16 +115,16 @@ body #siteContainer .row-fluid #content-container .lp .buttons-container .btnCon
   color: white;
   background-color: #ff6666;
 }
-body #siteContainer .row-fluid #content-container .myResume {
+body #siteContainer .row-fluid #content-container .my-resume {
   color: #545555;
   width: 70%;
 }
-body #siteContainer .row-fluid #content-container .myResume .myProfile {
+body #siteContainer .row-fluid #content-container .my-resume .myProfile {
   height: 125px;
   margin-bottom: 50px;
   position: relative;
 }
-body #siteContainer .row-fluid #content-container .myResume .myProfile .myImage {
+body #siteContainer .row-fluid #content-container .my-resume .myProfile .myImage {
   height: 125px;
   width: 125px;
   background-image: url('../images/benny.jpg');
@@ -131,12 +132,12 @@ body #siteContainer .row-fluid #content-container .myResume .myProfile .myImage 
   background-position: center;
   background-size: contain;
 }
-body #siteContainer .row-fluid #content-container .myResume .myProfile .links {
+body #siteContainer .row-fluid #content-container .my-resume .myProfile .links {
   bottom: 0px;
   position: absolute;
   left: 155px;
 }
-body #siteContainer .row-fluid #content-container .myResume .myProfile .links a {
+body #siteContainer .row-fluid #content-container .my-resume .myProfile .links a {
   text-decoration: underline;
   color: #545555;
   display: block;
@@ -144,28 +145,63 @@ body #siteContainer .row-fluid #content-container .myResume .myProfile .links a 
   font-weight: 200;
   padding-top: 35px;
 }
-body #siteContainer .row-fluid #content-container .myResume .resumeEntry {
+body #siteContainer .row-fluid #content-container .my-resume .resumeEntry {
   padding-bottom: 30px;
 }
-body #siteContainer .row-fluid #content-container .myResume .resumeEntry p {
+body #siteContainer .row-fluid #content-container .my-resume .resumeEntry p {
   margin-top: 0px;
 }
-body #siteContainer .row-fluid #content-container .myResume .resumeEntry .header {
+body #siteContainer .row-fluid #content-container .my-resume .resumeEntry .header {
   font-weight: 300;
   font-size: 2vw;
   padding-bottom: 30px;
 }
-body #siteContainer .row-fluid #content-container .myResume .resumeEntry .content {
+body #siteContainer .row-fluid #content-container .my-resume .resumeEntry .content {
   font-weight: 300;
   font-size: 1.4vw;
   line-height: 1.9vw;
 }
-body #siteContainer .row-fluid #content-container .myResume .resumeEntry .content .skill {
+body #siteContainer .row-fluid #content-container .my-resume .resumeEntry .content .skill {
   padding-bottom: 20px;
 }
-body #siteContainer .row-fluid #content-container .myResume .resumeEntry .content .skill .skill-name {
+body #siteContainer .row-fluid #content-container .my-resume .resumeEntry .content .skill .skill-name {
   width: 20%;
   display: inline-block;
   float: left;
   margin-right: 10%;
+}
+body #siteContainer .row-fluid #content-container .my-work-list {
+  color: #545555;
+}
+body #siteContainer .row-fluid #content-container .my-work-list .work-entry {
+  margin-bottom: 80px;
+}
+body #siteContainer .row-fluid #content-container .my-work-list .work-entry:hover {
+  cursor: pointer;
+}
+body #siteContainer .row-fluid #content-container .my-work-list .work-entry:hover .my-work-preview-img {
+  box-shadow: 1px 1px 15px #494949;
+}
+body #siteContainer .row-fluid #content-container .my-work-list .work-entry:hover .header {
+  color: #0080ff;
+  text-decoration: underline;
+}
+body #siteContainer .row-fluid #content-container .my-work-list .work-entry .my-work-preview-img {
+  transition: all 0.2s ease-out;
+  padding: 5px;
+  border-radius: 4px;
+}
+body #siteContainer .row-fluid #content-container .my-work-list .work-entry .my-work-preview-img img {
+  position: relative;
+  width: 100%;
+}
+body #siteContainer .row-fluid #content-container .my-work-list .work-entry .header {
+  transition: all 0.2s ease-out;
+  font-size: 2vw;
+  padding-bottom: 20px;
+}
+body #siteContainer .row-fluid #content-container .my-work-list .work-entry .my-work-preview-text {
+  line-height: 2vw;
+  font-size: 1.2vw;
+  width: 80%;
 }
