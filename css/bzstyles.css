@@ -60,6 +60,12 @@ body #siteContainer .row-fluid #sidebar-container #sidebar .menu .mItem:hover:no
 body #siteContainer .row-fluid #content-container {
   padding-top: 60px;
   position: relative;
+  height: 100%;
+  overflow-x: hidden;
+}
+body #siteContainer .row-fluid #content-container .content-view {
+  width: 100%;
+  position: absolute;
 }
 body #siteContainer .row-fluid #content-container .lp {
   margin-left: 20px;
@@ -197,11 +203,11 @@ body #siteContainer .row-fluid #content-container .my-work-list .work-entry .my-
 }
 body #siteContainer .row-fluid #content-container .my-work-list .work-entry .header {
   transition: all 0.2s ease-out;
-  font-size: 2vw;
+  font-size: 32px;
   padding-bottom: 20px;
 }
 body #siteContainer .row-fluid #content-container .my-work-list .work-entry .my-work-preview-text {
-  line-height: 2vw;
-  font-size: 1.2vw;
+  line-height: 1.5;
+  font-size: 18px;
   width: 80%;
 }

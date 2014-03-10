@@ -79,6 +79,13 @@ body{
       #content-container {
         padding-top: 60px;
         position: relative;
+        height: 100%;
+        overflow-x: hidden;
+
+        .content-view {
+          width: 100%;
+          position: absolute;
+        }
 
         .lp {
           margin-left: 20px;
@@ -244,13 +251,13 @@ body{
 
             .header {
               transition: all 0.2s ease-out;
-              font-size: 2vw;
+              font-size: 32px;
               padding-bottom: 20px;
             }
 
             .my-work-preview-text {
-              line-height: 2vw;
-              font-size: 1.2vw;
+              line-height: 1.5;
+              font-size: 18px;
               width: 80%;
             }
           }

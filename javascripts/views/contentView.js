@@ -42,6 +42,18 @@ var contentView = View.extend({
         self.controller.contentViewReplaced(toView);
     },
 
+    myWorkItemClicked: function(itemName) {
+        var self = this;
+        switch (itemName) {
+            case "Slender":
+                delete self.allViews["myWorkEntry"];
+                var newView = new myWorkEntry(this, "");
+                self.allViews["myWorkEntry"] = newView;
+                self.replaceContent("myWorkEntry", "hideLeft");
+                break;
+        }
+    },
+
     fadeReplacement: function(currView, nextView) {
         nextView.css("display", "none");
         currView.fadeOut(300, function() {
@@ -56,13 +68,12 @@ var contentView = View.extend({
         var contentViewWidth = container.width();
         nextView.hide().css({left: contentViewWidth});
         container.append(nextView);
-        currView.animate({left: contentViewWidth}, 300, "swing", function() {
-            currView.hide();
-            currView.remove()
+        currView.animate({left: -contentViewWidth}, 300, "linear", function() {
+            currView.remove();
         });
 
         nextView.show();
-        nextView.animate({left: 0}, 300, "swing");
+        nextView.animate({left: 0}, 300, "linear");
     },
 
     hideRight: function(callback) {

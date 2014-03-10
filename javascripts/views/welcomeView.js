@@ -13,7 +13,7 @@ var welcomeView = View.extend({
 
     render: function() {
         var self = this;
-        self.content = $('<div class="lp contentView"><div class="opening-quote">&quot;Everything that is beautiful and noble is the product of reason and calculation.&quot;</div>' +
+        self.content = $('<div class="lp content-view"><div class="opening-quote">&quot;Everything that is beautiful and noble is the product of reason and calculation.&quot;</div>' +
         '<div class="source">Charles Baudelaire</div><div class="buttons-container"><div class="btnContainer left">' +
         '<div id="blue-btn-welcome" class="inline-btn blue-btn">Who Am I</div></div><div class="btnContainer">' +
         '<div id="red-btn-welcome" class="inline-btn red-btn">My Work</div></div></div></div>');
