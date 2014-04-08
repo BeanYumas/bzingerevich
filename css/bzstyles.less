@@ -1,5 +1,9 @@
 @bz-txt-gray : rgb(84, 85, 85);
 @bz-blue : rgb(0, 128, 255);
+@bz-green : rgb(50, 135, 59);
+@header-height: 10%;
+@sidebar-width: 22%;
+@content-width: 78%;
 
 html, body, .container-fluid, .row-fluid {
   height: 100%;
@@ -13,21 +17,37 @@ body{
 
     .row-fluid {
 
+      .header {
+        position: fixed;
+        height: @header-height;
+        background-color: transparent;
+
+        .sidebar {
+          height: 100%;
+          width: @sidebar-width;
+          display: inline-block;
+          float: left;
+        }
+
+        .content {
+          height: 100%;
+          width: @content-width;
+          display: inline-block;
+
+          &.green {
+            background-color: @bz-green;
+          }
+        }
+      }
+
       #sidebar-container{
         height: 100%;
-        max-width: 320px;
+        display: inline-block;
+        width: 22%;
+        float: left;
+//        max-width: 320px;
 
         #sidebar{
-          font-size: 2.8vw;
-          color: @bz-txt-gray;
-          position: fixed;
-          top: 0px;
-          height: 100%;
-          font-weight: 100;
-          left: 0px;
-          width: inherit;
-          max-width: inherit;
-          padding: 60px 0px;
 
           .line {
             height: 95%;
@@ -36,7 +56,20 @@ body{
             background-color: #bebebe;
           }
 
-         .myName {
+          display: inline-block;
+          width: 25%;
+          font-size: 2.8vw;
+          color: @bz-txt-gray;
+          position: fixed;
+          top: @header-height;
+          height: 100%;
+          font-weight: 100;
+          left: 0px;
+          width: inherit;
+          max-width: inherit;
+          padding: 0px;
+
+          .myName {
             width: 80%;
             margin: auto;
           }
@@ -77,18 +110,93 @@ body{
       }
 
       #content-container {
-        padding-top: 60px;
+        display: inline-block;
+        margin: 0px;
         position: relative;
         height: 100%;
-        overflow-x: hidden;
+        width: @content-width;
+
+        .entry-container {
+         position: relative;
+         height: 100%;
+
+          .fixed-header {
+            position: fixed;
+            width: 78%;
+            box-shadow: 0px 1px 4px rgb(163, 163, 163);
+            z-index: 1000;
+            background: #ffffff;
+
+            .entryDetails {
+              width: 100%;
+              height: 90px;
+              background-color: @bz-green;
+              color: white;
+              display: table;
+              padding-left: 5%;
+
+              .entry-name {
+                font-size: 2.2em;
+                display: table-cell;
+                height: 100%;
+                font-weight: 300;
+                vertical-align: middle;
+              }
+
+              .entry-description {
+                font-size: 1em;
+                display: table-cell;
+                vertical-align: middle;
+                font-weight: 200;
+                line-height: 1.6;
+
+                div {
+                  width: 60%;
+                  padding-left: 35px;
+                }
+              }
+          }
+
+          .scroll-menu {
+            width: 100%;
+            ul {
+              width: 100%;
+              margin: 0;
+              padding: 0;
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-around;
+              list-style: none;
+
+              a {
+                padding: 1.25rem 0.5rem;
+                font-size: 1.6rem;
+                max-width: 250px;
+                font-weight: 300;
+                text-decoration: none;
+                display: flex;
+                align-items: flex-start;
+              }
+              .icon {
+                width: 40px;
+                height: 40px;
+                float: left;
+                margin-right: 1rem;
+              }
+            }
+          }
+        }
+        }
 
         .content-view {
-          width: 100%;
+          top: @header-height;
           position: absolute;
+          width: 90%;
+          margin: 0 auto;
+          padding-left: 5%;
         }
 
         .lp {
-          margin-left: 20px;
 
           .opening-quote {
             letter-spacing: 0.7px;
@@ -197,6 +305,7 @@ body{
               font-weight: 300;
               font-size: 2vw;
               padding-bottom: 30px;
+              position:relative;
             }
 
             .content {
@@ -222,6 +331,7 @@ body{
           color: @bz-txt-gray;
 
           .work-entry {
+            margin-left: 0px;
             margin-bottom: 80px;
 
             &:hover {
@@ -231,7 +341,7 @@ body{
                   box-shadow: 1px 1px 15px rgb(73, 73, 73);
               }
 
-              .header {
+              .entry-header {
                 color: @bz-blue;
                 text-decoration: underline;
               }
@@ -249,7 +359,7 @@ body{
                }
              }
 
-            .header {
+            .entry-header {
               transition: all 0.2s ease-out;
               font-size: 32px;
               padding-bottom: 20px;
@@ -260,6 +370,18 @@ body{
               font-size: 18px;
               width: 80%;
             }
+          }
+        }
+
+        .my-work-entry {
+
+          margin-left: 0px;
+          position: relative;
+          height: 100%;
+
+          .entry-content {
+            position: absolute;
+            top: 27%;
           }
         }
       }

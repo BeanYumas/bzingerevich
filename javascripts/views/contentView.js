@@ -14,6 +14,12 @@ var contentView = View.extend({
             'whoAmI'      : new whoAmIView(this),
             'myWork'      : new myWorkList(this)
         };
+
+        this.myWorkModels = {
+            'Slender' : new slenderModel(),
+            'MyOnlineCV'      : {},
+            'CSI'      : {}
+        };
         this.currView = this.allViews.welcomeView;
     },
 
@@ -44,14 +50,9 @@ var contentView = View.extend({
 
     myWorkItemClicked: function(itemName) {
         var self = this;
-        switch (itemName) {
-            case "Slender":
-                delete self.allViews["myWorkEntry"];
-                var newView = new myWorkEntry(this, "");
-                self.allViews["myWorkEntry"] = newView;
-                self.replaceContent("myWorkEntry", "hideLeft");
-                break;
-        }
+        delete self.allViews["myWorkEntry"];
+        self.allViews["myWorkEntry"] = new myWorkEntry(this, this.getMyWorkData(itemName));
+        self.replaceContent("myWorkEntry", "hideLeft");
     },
 
     fadeReplacement: function(currView, nextView) {
@@ -64,12 +65,14 @@ var contentView = View.extend({
     },
 
     hideLeft: function(currView, nextView) {
-        var container = $('#content-container')
+        var container = $('#content-container');
+        container.css({"overflow-x" : "hidden"});
         var contentViewWidth = container.width();
         nextView.hide().css({left: contentViewWidth});
         container.append(nextView);
         currView.animate({left: -contentViewWidth}, 300, "linear", function() {
             currView.remove();
+            container.css({"overflow-x" : "visible"});
         });
 
         nextView.show();
@@ -84,5 +87,9 @@ var contentView = View.extend({
             this.css({left: prevLeft});
             callback();
         })
+    },
+
+    getMyWorkData: function(itemName) {
+        return this.myWorkModels[itemName];
     }
 });

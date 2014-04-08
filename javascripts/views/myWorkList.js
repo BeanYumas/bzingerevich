@@ -38,8 +38,8 @@ var myWorkList = View.extend({
         var self = this;
         self.content = $("<div class='my-work-list content-view'></div>");
         $.each(self.listItems, function(itemName, itemValue) {
-           var row = $("<div class='row-fluid work-entry'><div class='span3'><div class='my-work-preview-img'><img src='" + itemValue.imageSrc +
-               "'></div></div><div class='span9'><div class='header'>" + itemValue.workName +
+           var row = $("<div class='row work-entry'><div class='span3'><div class='my-work-preview-img'><img src='" + itemValue.imageSrc +
+               "'></div></div><div class='span9'><div class='entry-header'>" + itemValue.workName +
                "</div><div class='my-work-preview-text'>" + itemValue.workContent + "</div></div></div>");
             row.click(function() {
                self.container.myWorkItemClicked(itemName);
