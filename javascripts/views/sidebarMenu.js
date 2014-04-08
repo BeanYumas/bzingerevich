@@ -38,8 +38,11 @@ var sideBarMenu = View.extend({
     },
 
     setSelected: function(menuItemName) {
-        $('.mItem').removeClass('selected');
-        $('#' + menuItemName).addClass('selected');
+        var menuItem = $('#' + menuItemName);
+        if(menuItem && this.menuItems[menuItemName]) {
+            $('.mItem').removeClass('selected');
+            menuItem.addClass('selected');
+        }
     }
 });
 

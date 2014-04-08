@@ -38,6 +38,11 @@ var sideBar = View.extend({
         this.content = $(self.template);
         $('.menu', this.content).append(this.sidebarMenu.render());
         $(element).append(this.content);
+
+        $('.myName', this.content).click(function() {
+            self.controller.replaceContentView("welcomeView");
+            self.hideMenu();
+        });
     },
 
     hideMenu: function () {

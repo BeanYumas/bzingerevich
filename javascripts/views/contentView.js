@@ -9,17 +9,19 @@
 var contentView = View.extend({
     init: function(controller) {
         this.controller = controller;
+
+        this.myWorkModels = {
+            'Slender'           : new slenderModel(),
+            'MyOnlineCV'        : new onlineCVModel(),
+            'CSI'               : new csiAppModel()
+        };
+
         this.allViews = {
             'welcomeView' : new welcomeView(this),
             'whoAmI'      : new whoAmIView(this),
-            'myWork'      : new myWorkList(this)
+            'myWork'      : new myWorkList(this, this.myWorkModels)
         };
 
-        this.myWorkModels = {
-            'Slender' : new slenderModel(),
-            'MyOnlineCV'      : {},
-            'CSI'      : {}
-        };
         this.currView = this.allViews.welcomeView;
     },
 

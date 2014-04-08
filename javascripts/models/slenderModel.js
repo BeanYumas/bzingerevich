@@ -10,8 +10,11 @@ var slenderModel = baseModel.extend({
 
     init: function() {
         this.data = {
+            displayName: "Slender",
             entryName: "Slender",
-            entryDescription: "Echo Park Helvetica messenger bag, food truck forage kogi bespoke. Photo booth fashion axe anim incididunt, art party exercitation kogi"
+            entryDescription: "Slender lets students take notes, collect their classmates' notes and any other study materials (PDFs, PPTs, etc.)." +
+                "The best, most relevant study material, pops up in Slender automatically, so adding it is as easy as swiping your finger.",
+            entryImage: "./images/slender_preview.png"
         }
     }
 
