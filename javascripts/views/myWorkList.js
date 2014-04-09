@@ -15,12 +15,12 @@ var myWorkList = View.extend({
     render: function() {
         var self = this;
         self.content = $("<div class='my-work-list content-view'></div>");
-        $.each(self.myWorkModels, function(modelName, modelValue) {
+        $.each(self.myWorkModels, function(index, modelValue) {
            var row = $("<div class='row work-entry'><div class='span3'><div class='my-work-preview-img'><img src='" + modelValue.getData().entryImage +
                "'></div></div><div class='span9'><div class='entry-header'>" + modelValue.getData().displayName +
                "</div><div class='my-work-preview-text'>" + modelValue.getData().entryDescription + "</div></div></div>");
             row.click(function() {
-               self.container.myWorkItemClicked(modelValue.getData().entryName);
+               self.container.myWorkItemClicked(index);
             });
             self.content.append(row);
         });

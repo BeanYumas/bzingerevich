@@ -1,9 +1,11 @@
 @bz-txt-gray : rgb(84, 85, 85);
 @bz-blue : rgb(0, 128, 255);
+@bz-red: #ff6666;
 @bz-green : rgb(50, 135, 59);
 @header-height: 10%;
 @sidebar-width: 22%;
 @content-width: 78%;
+@fixed-header-height: 160px;
 
 html, body, .container-fluid, .row-fluid {
   height: 100%;
@@ -122,6 +124,7 @@ body{
          height: 100%;
 
           .fixed-header {
+            height: @fixed-header-height;
             position: fixed;
             width: 78%;
             box-shadow: 0px 1px 4px rgb(163, 163, 163);
@@ -134,7 +137,6 @@ body{
               background-color: @bz-green;
               color: white;
               display: table;
-              padding-left: 5%;
 
               .entry-name {
                 font-size: 2.2em;
@@ -142,9 +144,50 @@ body{
                 height: 100%;
                 font-weight: 300;
                 vertical-align: middle;
+                width: 5%;
+                text-align: center;
+                padding-left: 5%;
+              }
+
+              .nav-btn {
+                transition: all 0.3s ease-out;
+                display: none;
+                text-align: center;
+                height: 100%;
+                font-weight: 300;
+                vertical-align: middle;
+                font-size: 1.2em;
+                cursor: pointer;
+                width: 15%;
+                padding: 0px 10px;
+                line-height: 2em;
+                color: #ffffff;
+                font-weight: 100;
+
+                &:hover {
+                  text-decoration: underline;
+                  color: #ffffff;
+                }
+              }
+              .my-next-work {
+                .nav-btn;
+
+                div {
+                  border-left: 1px solid white;
+                }
+              }
+
+              .my-prev-work {
+                .nav-btn;
+
+                div {
+                  border-right: 1px solid white;
+                }
               }
 
               .entry-description {
+
+                padding: 0px 20px;
                 font-size: 1em;
                 display: table-cell;
                 vertical-align: middle;
@@ -152,7 +195,6 @@ body{
                 line-height: 1.6;
 
                 div {
-                  width: 60%;
                   padding-left: 35px;
                 }
               }
@@ -170,6 +212,8 @@ body{
               list-style: none;
 
               a {
+                cursor: pointer;
+                transition: all 0.3s ease-out;
                 padding: 1.25rem 0.5rem;
                 font-size: 1.6rem;
                 max-width: 250px;
@@ -177,6 +221,11 @@ body{
                 text-decoration: none;
                 display: flex;
                 align-items: flex-start;
+                border-bottom: 4px solid transparent;
+
+                &.selected {
+                  border-bottom: 4px solid @bz-red;
+                }
               }
               .icon {
                 width: 40px;
@@ -248,12 +297,12 @@ body{
                 }
 
                 &.red-btn {
-                  color: rgb(255, 102, 102);
-                  border-color: rgb(255, 102, 102);
+                  color: @bz-red;
+                  border-color: @bz-red;
 
                   &:hover {
                     color: white;
-                    background-color: rgb(255, 102, 102);
+                    background-color: @bz-red;
                   }
                 }
               }
@@ -375,14 +424,24 @@ body{
         }
 
         .my-work-entry {
-
+          top: @fixed-header-height;
           margin-left: 0px;
           position: relative;
           height: 100%;
 
           .entry-content {
             position: absolute;
-            top: 27%;
+            top: 50px;
+
+            section {
+              height: 300px;
+
+              .subheader {
+                color: @bz-txt-gray;
+                font-size: 2rem;
+                font-weight: 200;
+              }
+            }
           }
         }
       }
