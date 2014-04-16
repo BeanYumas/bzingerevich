@@ -440,6 +440,88 @@ body{
                 color: @bz-txt-gray;
                 font-size: 2rem;
                 font-weight: 200;
+                padding-top: 40px;
+
+                &.business-goals {
+                  padding-top: 0px;
+                }
+
+                .title {
+                  padding-bottom: 20px;
+                }
+              }
+            }
+
+            .goals-content {
+              font-size: 1.4rem;
+            }
+
+            .persona-slider {
+              .persona-image{
+                margin: auto  ;
+                width: 150px;
+                background-size: cover;
+                border-radius: 150px;
+                height: 150px;
+                background-repeat: no-repeat;
+                background-position: 80% 5%;
+                border: 3px solid #a7a9a9;
+              }
+
+              .persona-container {
+               margin-top: -10px;
+               height: 350px;
+                .persona-details {
+                  text-align: center;
+                  font-size: 1.4rem;
+                  margin: 10px;
+                }
+
+                .persona-needs {
+                  text-align: center;
+                  font-size: 1.2rem;
+                  margin: 5px;
+                  line-height: 1.5;
+                }
+
+                .needs {
+                 .persona-details;
+                  font-weight: 400;
+                  text-decoration: underline;
+                }
+              }
+            }
+
+
+            .conclusions-slider {
+
+              .conclusion-container {
+                margin-top: -30px;
+                font-size: 1.4rem;
+                text-align: center;
+                background-size: cover;
+                background-position: 50% 50%;
+                height: 320px;
+
+                &.blue-conclusion {
+                  background-image: url('../images/blue_light_bulb.svg');
+                }
+                &.red-conclusion {
+                  background-image: url('../images/red_light_bulb.svg');
+                }
+                &.green-conclusion {
+                  background-image: url('../images/green_light_bulb.svg');
+                }
+
+                .conclusion-details {
+                  font-size: 1.2rem;
+                  font-weight: 400;
+                  width: 45%;
+                  margin: auto;
+                  position: relative;
+                  top: 70px;
+                  line-height: 1.3;
+                }
               }
             }
           }

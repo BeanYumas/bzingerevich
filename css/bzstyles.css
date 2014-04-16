@@ -391,4 +391,72 @@ body #siteContainer .row-fluid #content-container .my-work-entry .entry-content 
   color: #545555;
   font-size: 2rem;
   font-weight: 200;
+  padding-top: 40px;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section .subheader.business-goals {
+  padding-top: 0px;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section .subheader .title {
+  padding-bottom: 20px;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content .goals-content {
+  font-size: 1.4rem;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content .persona-slider .persona-image {
+  margin: auto  ;
+  width: 150px;
+  background-size: cover;
+  border-radius: 150px;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-position: 80% 5%;
+  border: 3px solid #a7a9a9;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content .persona-slider .persona-container {
+  margin-top: -10px;
+  height: 350px;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content .persona-slider .persona-container .persona-details {
+  text-align: center;
+  font-size: 1.4rem;
+  margin: 10px;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content .persona-slider .persona-container .persona-needs {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 5px;
+  line-height: 1.5;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content .persona-slider .persona-container .needs {
+  text-align: center;
+  font-size: 1.4rem;
+  margin: 10px;
+  font-weight: 400;
+  text-decoration: underline;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content .conclusions-slider .conclusion-container {
+  margin-top: -30px;
+  font-size: 1.4rem;
+  text-align: center;
+  background-size: cover;
+  background-position: 50% 50%;
+  height: 320px;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content .conclusions-slider .conclusion-container.blue-conclusion {
+  background-image: url('../images/blue_light_bulb.svg');
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content .conclusions-slider .conclusion-container.red-conclusion {
+  background-image: url('../images/red_light_bulb.svg');
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content .conclusions-slider .conclusion-container.green-conclusion {
+  background-image: url('../images/green_light_bulb.svg');
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content .conclusions-slider .conclusion-container .conclusion-details {
+  font-size: 1.2rem;
+  font-weight: 400;
+  width: 45%;
+  margin: auto;
+  position: relative;
+  top: 70px;
+  line-height: 1.3;
 }

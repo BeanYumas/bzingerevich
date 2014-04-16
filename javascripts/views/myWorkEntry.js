@@ -18,14 +18,15 @@ var myWorkEntry = View.extend({
         self.content = $("<div class='entry-container'><div class='my-work-entry content-view'>" +
             "<div class='entry-content'><section id='research'><div class='subheader business-goals'>What are the Business Goals?</div>" +
             "<div class='subheader personas'>Who are the Users?</div>" +
-            "<div class='subheader needs'>What are the User's Needs?</div>" +
-            "<div class='subheader conclusions'>Conclusions</div>" +
+            "<div class='subheader conclusions'><div class='title'>Conclusions</div></div>" +
             "</section>" +
             "<section id='nav-model'><div class='subheader navigation-tree'></div></section>" +
             "<section id='wireframes'></section>" +
             "<section id='prototype'></section></div></div></div>");
 
         self.addHeader();
+
+        self.fillContent();
 
         $(window).scroll(function(){
             self.scrolled(self);
@@ -34,11 +35,88 @@ var myWorkEntry = View.extend({
         return self.content;
     },
 
+    getBusinessGoals: function() {
+        var research = this.model.getData().research;
+        var businessGoals = $("<div class='goals-content'></div>");
+        $.each(research.businessGoals, function(index, goal) {
+            businessGoals.append("<p>" + (index+1) + ". " + goal + "</p>");
+        });
+        return businessGoals;
+    },
+
+    getPersonas: function() {
+        var research = this.model.getData().research;
+        var personas = $("<ul class='persona-slider'></ul>");
+        $.each(research.personas, function(index, persona) {
+            personas.append("<li><div class='persona-container'><p class='persona-details'>"
+                + persona.name + ", " + persona.age + "</p><div class='persona-image' style='background-image:url(\"" + persona.image + "\")';></div>" +
+                "<div class='needs'>Needs</div><p class='persona-needs'>" + persona.needs + "</p></div></li>");
+        });
+        return personas;
+    },
+
+    getConclusions: function() {
+        var research = this.model.getData().research;
+        var conclusions = $("<ul class='conclusions-slider'></ul>");
+        $.each(research.conclusions, function(index, conclusion) {
+            var conclusionsContainer = $("<li><div class='conclusion-container'><p class='conclusion-details'>"
+                + conclusion + "</p></div></li>");
+            var innerContainer = $('.conclusion-container', conclusionsContainer);
+            switch(index%3) {
+                case 0:
+                    innerContainer.addClass('blue-conclusion');
+                    break;
+                case 1:
+                    innerContainer.addClass('red-conclusion');
+                    break;
+                case 2:
+                    innerContainer.addClass('green-conclusion');
+                    break;
+            }
+
+            conclusions.append(conclusionsContainer.html())
+
+        });
+        return conclusions;
+    },
+
+    afterShowView: function() {
+        var personas = $('.persona-slider');
+        personas.bxSlider({
+            slideWidth: 200,
+            minSlides: 2,
+            maxSlides: 5,
+            slideMargin: 50,
+            infiniteLoop: false,
+            hideControlOnEnd: true,
+            pager: false
+        });
+
+        var conclusion = $('.conclusions-slider');
+        conclusion.bxSlider({
+            slideWidth: 320,
+            minSlides: 1,
+            moveSlides: 1,
+            maxSlides: 5,
+            slideMargin: 50,
+            infiniteLoop: false,
+            hideControlOnEnd: true,
+            pager: false
+        });
+    },
+
+    fillContent: function() {
+        $('.business-goals', this.content).append(this.getBusinessGoals());//businessGoals
+        $('.personas', this.content).append(this.getPersonas());//personas
+        $('.conclusions', this.content).append(this.getConclusions());//conclusions
+    },
+
     scrolled: function(self) {
         var sectionHeight = $('.entry-content section').height();
-        var sectionNum = Math.floor($(document.body).scrollTop()/sectionHeight);
+        var sectionNum = Math.floor(($(document.body).scrollTop() +160)/sectionHeight);
 
         if(self.currSection != sectionNum) {
+            self.currSection = sectionNum;
             var allMenuItems = $('.menu-item a').removeClass('selected');
             $(allMenuItems[sectionNum]).addClass('selected');
         }
@@ -52,6 +130,8 @@ var myWorkEntry = View.extend({
             "<li class='menu-item'><a scrollTo='wireframes'>Wireframes</a></li>" +
             "<li class='menu-item'><a scrollTo='prototype'>Prototype</a></li>" +
         "</ul></nav></div>");
+
+        this.currSection = 0;
 
         $('.menu-item a', header).click(function() {
             var clickedItem = $(this);

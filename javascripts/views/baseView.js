@@ -13,5 +13,9 @@ var View = Class.extend({
 
     replaceTemplateStub: function(stub, content) {
         return this.template.replace(stub, content);
+    },
+
+    afterShowView: function() {
+
     }
 });

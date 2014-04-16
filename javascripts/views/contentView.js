@@ -83,12 +83,17 @@ var contentView = View.extend({
     },
 
     fadeReplacement: function(currView, nextView) {
+        var self = this;
         nextView.css("display", "none");
         currView.fadeOut(300, function() {
             $(document.body).scrollTop(0);
             $('#content-container').append(nextView);
             nextView.fadeIn(300);
             currView.remove();
+            if(self.currView.afterShowView)
+            {
+                self.currView.afterShowView();
+            }
         });
     },
 
