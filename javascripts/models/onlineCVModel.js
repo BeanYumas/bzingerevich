@@ -56,7 +56,7 @@ var onlineCVModel = baseModel.extend({
                 conclusions: [
                     "Catch attention with cool and creative stuff",
                     "Give power to advanced users",
-                    "Make the resume creation process fun",
+                    'Make the "resume creation process" fun',
                     "Give templates to less creative people",
                     "Show progress in the resume creation process"
                 ]

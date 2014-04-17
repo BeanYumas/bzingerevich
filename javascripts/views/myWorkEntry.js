@@ -16,11 +16,11 @@ var myWorkEntry = View.extend({
     render: function() {
         var self = this;
         self.content = $("<div class='entry-container'><div class='my-work-entry content-view'>" +
-            "<div class='entry-content'><section id='research'><div class='subheader business-goals'>What are the Business Goals?</div>" +
-            "<div class='subheader personas'>Who are the Users?</div>" +
-            "<div class='subheader conclusions'><div class='title'>Conclusions</div></div>" +
+            "<div class='entry-content'><section id='research'><div class='sub-section business-goals'><div class='title'>What are the Business Goals?</div></div>" +
+            "<div class='sub-section personas'><div class='title'>Who are the Users?</div></div>" +
+            "<div class='sub-section conclusions'><div class='title'>Conclusions</div></div>" +
             "</section>" +
-            "<section id='nav-model'><div class='subheader navigation-tree'></div></section>" +
+            "<section id='nav-model'><div class='sub-section navigation-tree'></div></section>" +
             "<section id='wireframes'></section>" +
             "<section id='prototype'></section></div></div></div>");
 
@@ -59,9 +59,9 @@ var myWorkEntry = View.extend({
         var research = this.model.getData().research;
         var conclusions = $("<ul class='conclusions-slider'></ul>");
         $.each(research.conclusions, function(index, conclusion) {
-            var conclusionsContainer = $("<li><div class='conclusion-container'><p class='conclusion-details'>"
-                + conclusion + "</p></div></li>");
-            var innerContainer = $('.conclusion-container', conclusionsContainer);
+            var conclusionsContainer = $("<li><div class='conclusion-container'><div class='light-bulb'><p class='conclusion-details'>"
+                + conclusion + "</p></div></div></li>");
+            var innerContainer = $('.light-bulb', conclusionsContainer);
             switch(index%3) {
                 case 0:
                     innerContainer.addClass('blue-conclusion');
@@ -83,9 +83,10 @@ var myWorkEntry = View.extend({
     afterShowView: function() {
         var personas = $('.persona-slider');
         personas.bxSlider({
-            slideWidth: 200,
-            minSlides: 2,
-            maxSlides: 5,
+            slideWidth: 300,
+            minSlides: 1,
+            moveSlides: 1,
+            maxSlides: 4,
             slideMargin: 50,
             infiniteLoop: false,
             hideControlOnEnd: true,
@@ -94,10 +95,10 @@ var myWorkEntry = View.extend({
 
         var conclusion = $('.conclusions-slider');
         conclusion.bxSlider({
-            slideWidth: 320,
+            slideWidth: 300,
             minSlides: 1,
             moveSlides: 1,
-            maxSlides: 5,
+            maxSlides: 4,
             slideMargin: 50,
             infiniteLoop: false,
             hideControlOnEnd: true,
@@ -165,7 +166,7 @@ var myWorkEntry = View.extend({
         if(this.container.showPrevWorkBtn()) {//there is a next button
             var prevBtn = $(".my-prev-work", headerToFill);
             prevBtn.css('display', 'table-cell');
-            $('.entry-name', headerToFill).css('padding-left', '30px')
+            $('.entry-name', headerToFill).css('padding-left', '30px');
             prevBtn.click(function() {
                 self.container.prevWorkClicked.call(self.container)
             });
