@@ -128,7 +128,7 @@ body{
             position: fixed;
             width: 78%;
             box-shadow: 0px 1px 4px rgb(163, 163, 163);
-            z-index: 10000;
+            z-index: 5000;
             background: #ffffff;
 
             .entryDetails {
@@ -445,6 +445,38 @@ body{
                 .title {
                   padding-bottom: 20px;
                 }
+
+                .content {
+                  font-size: 1.4rem;
+                }
+              }
+
+              .light-bulb {
+                background-size: cover;
+                background-position: 50% 50%;
+                height: 330px;
+                width: 300px;
+                background-image: url('../images/light_bulb.svg');
+
+                &.blue-conclusion {
+                  background-image: url('../images/blue_light_bulb.svg');
+                }
+                &.red-conclusion {
+                  background-image: url('../images/red_light_bulb.svg');
+                }
+                &.green-conclusion {
+                  background-image: url('../images/green_light_bulb.svg');
+                }
+
+                .conclusion-details {
+                  font-size: 1.2rem;
+                  font-weight: 400;
+                  width: 50%;
+                  margin: auto;
+                  position: relative;
+                  top: 70px;
+                  line-height: 1.5;
+                }
               }
 
               &#research {
@@ -460,10 +492,6 @@ body{
 
                 .business-goals {
                   padding-top: 0px;
-                }
-
-                .goals-content {
-                  font-size: 1.4rem;
                 }
 
                 .persona-slider {
@@ -510,33 +538,43 @@ body{
                     font-size: 1.4rem;
                     text-align: center;
                     height: 340px;
+                  }
+                }
+              }
 
-                    .light-bulb {
-                      background-size: cover;
-                      background-position: 50% 50%;
-                      height: 330px;
-                      width: 300px;
+              &#nav-model{
+                .screen-flow-details {
+                  .nav-image {
+                    height: 600px;
+                    background-size: 70%;
+                    background-repeat: no-repeat;
+                  }
 
+                  .problem {
+                    top: 70px;
+                    position: relative;
+                    font-size: 1.6rem;
+                    border: 1px solid @bz-txt-gray;
+                    line-height: 1.6;
+                    padding: 10px;
+                    text-align: center;
+                  }
 
-                      &.blue-conclusion {
-                        background-image: url('../images/blue_light_bulb.svg');
-                      }
-                      &.red-conclusion {
-                        background-image: url('../images/red_light_bulb.svg');
-                      }
-                      &.green-conclusion {
-                        background-image: url('../images/green_light_bulb.svg');
-                      }
+                  .arrow {
+                    position: relative;
+                    top: 50px;
+                    padding: 30px;
+                    font-size: 4rem;
+                  }
 
-                      .conclusion-details {
-                        font-size: 1.2rem;
-                        font-weight: 400;
-                        width: 50%;
-                        margin: auto;
-                        position: relative;
-                        top: 70px;
-                        line-height: 1.5;
-                      }
+                  .light-bulb {
+                    width: 250px;
+                    height: 400px;
+
+                    .conclusion-details {
+                      width: 60%;
+                      font-size: 1.4rem;
+                      text-align: center;
                     }
                   }
                 }

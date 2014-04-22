@@ -97,7 +97,7 @@ body #siteContainer .row-fluid #content-container .entry-container .fixed-header
   position: fixed;
   width: 78%;
   box-shadow: 0px 1px 4px #a3a3a3;
-  z-index: 10000;
+  z-index: 5000;
   background: #ffffff;
 }
 body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails {
@@ -396,6 +396,34 @@ body #siteContainer .row-fluid #content-container .my-work-entry .entry-content 
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section .sub-section .title {
   padding-bottom: 20px;
 }
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section .sub-section .content {
+  font-size: 1.4rem;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section .light-bulb {
+  background-size: cover;
+  background-position: 50% 50%;
+  height: 330px;
+  width: 300px;
+  background-image: url('../images/light_bulb.svg');
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section .light-bulb.blue-conclusion {
+  background-image: url('../images/blue_light_bulb.svg');
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section .light-bulb.red-conclusion {
+  background-image: url('../images/red_light_bulb.svg');
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section .light-bulb.green-conclusion {
+  background-image: url('../images/green_light_bulb.svg');
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section .light-bulb .conclusion-details {
+  font-size: 1.2rem;
+  font-weight: 400;
+  width: 50%;
+  margin: auto;
+  position: relative;
+  top: 70px;
+  line-height: 1.5;
+}
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#research .bx-wrapper {
   margin: 0px !important;
 }
@@ -405,9 +433,6 @@ body #siteContainer .row-fluid #content-container .my-work-entry .entry-content 
 }
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#research .business-goals {
   padding-top: 0px;
-}
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#research .goals-content {
-  font-size: 1.4rem;
 }
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#research .persona-slider .persona-image {
   margin: auto  ;
@@ -447,27 +472,32 @@ body #siteContainer .row-fluid #content-container .my-work-entry .entry-content 
   text-align: center;
   height: 340px;
 }
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#research .conclusions-slider .conclusion-container .light-bulb {
-  background-size: cover;
-  background-position: 50% 50%;
-  height: 330px;
-  width: 300px;
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#nav-model .screen-flow-details .nav-image {
+  height: 600px;
+  background-size: 70%;
+  background-repeat: no-repeat;
 }
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#research .conclusions-slider .conclusion-container .light-bulb.blue-conclusion {
-  background-image: url('../images/blue_light_bulb.svg');
-}
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#research .conclusions-slider .conclusion-container .light-bulb.red-conclusion {
-  background-image: url('../images/red_light_bulb.svg');
-}
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#research .conclusions-slider .conclusion-container .light-bulb.green-conclusion {
-  background-image: url('../images/green_light_bulb.svg');
-}
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#research .conclusions-slider .conclusion-container .light-bulb .conclusion-details {
-  font-size: 1.2rem;
-  font-weight: 400;
-  width: 50%;
-  margin: auto;
-  position: relative;
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#nav-model .screen-flow-details .problem {
   top: 70px;
-  line-height: 1.5;
+  position: relative;
+  font-size: 1.6rem;
+  border: 1px solid #545555;
+  line-height: 1.6;
+  padding: 10px;
+  text-align: center;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#nav-model .screen-flow-details .arrow {
+  position: relative;
+  top: 50px;
+  padding: 30px;
+  font-size: 4rem;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#nav-model .screen-flow-details .light-bulb {
+  width: 250px;
+  height: 400px;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#nav-model .screen-flow-details .light-bulb .conclusion-details {
+  width: 60%;
+  font-size: 1.4rem;
+  text-align: center;
 }

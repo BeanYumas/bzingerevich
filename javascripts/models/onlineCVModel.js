@@ -60,8 +60,27 @@ var onlineCVModel = baseModel.extend({
                     "Give templates to less creative people",
                     "Show progress in the resume creation process"
                 ]
+            },
+            navModel: {
+                image: "./images/MyOnlineCV/nav-tree.png"
+            },
+            wireframes: {
+                content:
+                    [
+                        {
+                            problem: 'The "Resume creation process" is long',
+                            solution: 'We should do it as a wizard (but a cool one)'
+                        },
+                        {
+                            problem: 'In the creative field there is a need for multiple resumes (custom for each employer)',
+                            solution: 'We should have a Dashboard'
+                        },
+                        {
+                            problem: 'We want to catch attention quickly',
+                            solution: 'You can fill in the resume without signing up. Sign up only when sending your resume'
+                        }
+                    ]
             }
         }
     }
-
 });
