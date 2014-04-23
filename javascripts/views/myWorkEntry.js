@@ -20,10 +20,10 @@ var myWorkEntry = View.extend({
             "<div class='sub-section personas'><div class='title'>Who are the Users?</div></div>" +
             "<div class='sub-section conclusions'><div class='title'>Conclusions</div></div>" +
             "</section>" +
-            "<section id='nav-model'><div class='sub-section navigation-tree'><div class='title'>What kind of screens are there & what is the flow?</div>" +
+            "<section id='nav-model'><div class='sub-section navigation-tree'><div class='title'>What is the screen flow?</div>" +
             "<div class='screen-flow-details'></div></div></section>" +
-            "<section id='wireframes'></section>" +
-            "<section id='prototype'></section></div></div></div>");
+            "<section id='wireframes'><div class='sub-section'><div class='title'>Show me some screens!</div></div></section>" +
+            "<section id='prototype'><div class='sub-section'><div class='title'>Let me try it!</div></div></section></div></div></div>");
 
         self.addHeader();
 
@@ -51,7 +51,7 @@ var myWorkEntry = View.extend({
         var personas = $("<ul class='persona-slider'></ul>");
         $.each(research.personas, function(index, persona) {
             personas.append("<li><div class='persona-container'><p class='persona-details'>"
-                + persona.name + ", " + persona.age + "</p><div class='persona-image' style='background-image:url(\"" + persona.image + "\")';></div>" +
+                + persona.name + ", " + persona.age + "</p><p class='persona-profession'>" + persona.profession + "</p><div class='persona-image' style='background-image:url(\"" + persona.image + "\")';></div>" +
                 "<div class='needs'>Needs</div><p class='persona-needs'>" + persona.needs + "</p></div></li>");
         });
         return personas;
@@ -89,31 +89,49 @@ var myWorkEntry = View.extend({
 
     getNavModel: function() {
         var navModel = this.model.getData().navModel;
-        var contents = $("<a class='fancybox nav-image-link' rel='group' href='" + navModel.image +"'</a><div class='nav-image' style='background-image:url(\"" +
-            navModel.image + "\")';></div> ");
-//        var navModel = this.model.getData().navModel;
-//        var contents = $("<div class='container-fluid'></div>");
-//        $.each(navModel.content, function(index, content) {
-//            var row = $("<div class='row-fluid problem-solution'><div class='span4 problem'>" + content.problem + "</div>" +
-//                "<div class='span2 arrow'>&RightArrow;</div>" +
-//                "<div class='span4'><div class='light-bulb'><p class='conclusion-details'>"+ content.solution + "</p></div></div>" +
-//                "</div>");
-//            var solution = $('.light-bulb', row);
-//            switch(index%3) {
-//                case 0:
-//                    solution.addClass('blue-conclusion');
-//                    break;
-//                case 1:
-//                    solution.addClass('red-conclusion');
-//                    break;
-//                case 2:
-//                    solution.addClass('green-conclusion');
-//                    break;
-//            }
-//            contents.append(row)
-//        });
-
+        var contents = $("<img class='nav-image' src='" + navModel.image + "';>");
         return contents;
+    },
+
+    ////////////////////////////////////////////////////////
+
+
+    ///////////////  wireframes part //////////////////////////
+    getWireframes: function() {
+        var conclusions = this.model.getData().research.conclusions;
+        var wireFrames = this.model.getData().wireframes;
+        var contents = $("<div class='container-fluid'></div>");
+        $.each(wireFrames.content, function(index, content) {
+            var row = $("<div class='row conclusion-wireframe'><div class='span4 light-bulb'><p class='conclusion-details'>" + conclusions[index] + "</p></div>" +
+                "<div class='span3 arrow'>&RightArrow;</div>" +
+                "<div class='span5'><img class='wireframe-image' src='" + content.image + "'></div></div>" +
+                "</div>");
+            var solution = $('.light-bulb', row);
+            switch(index%3) {
+                case 0:
+                    row.addClass('firstRow');
+                    solution.addClass('blue-conclusion');
+                    break;
+                case 1:
+                    solution.addClass('red-conclusion');
+                    break;
+                case 2:
+                    solution.addClass('green-conclusion');
+                    break;
+            }
+            contents.append(row)
+        });
+       return contents;
+    },
+    ////////////////////////////////////////////////////////
+
+    ///////////////  prototype part //////////////////////////
+
+    getPrototype: function() {
+        var prototype = this.model.getData().prototype;
+        var image = $("<a target='_blank' title='click to open prototype in invision' href='" + prototype.url + "'><img class='proto-image' src='" + prototype.image + "'></a>");
+
+        return image;
     },
 
     ////////////////////////////////////////////////////////
@@ -143,13 +161,26 @@ var myWorkEntry = View.extend({
             pager: false
         });
 
+
+        this.attachFancyBox();
+    },
+
+    attachFancyBox: function() {
+        var navModel = this.model.getData().navModel;
+        $('.nav-image').wrap("<a class='fancybox nav-image-link' rel='group' href='" + navModel.image +"'</a>");
+
+        $('.wireframe-image').each(function(index, element) {
+            $(element).wrap("<a class='fancybox' rel='group' href='" + element.src +"'</a>");
+        });
+
         $(".fancybox").fancybox(
             {
                 helpers: {
                     overlay: {
                         locked: false
                     }
-                }
+                },
+                arrows: false
             }
         );
     },
@@ -162,6 +193,12 @@ var myWorkEntry = View.extend({
 
         //nav-model
         $('.screen-flow-details', this.content).append(this.getNavModel());
+
+        //wireframes
+        $('#wireframes', this.content).append(this.getWireframes());
+
+        //prototype
+        $('#prototype', this.content).append(this.getPrototype());
     },
 
     scrolled: function(self) {
@@ -191,7 +228,7 @@ var myWorkEntry = View.extend({
             $('.menu-item a').removeClass('selected');
             clickedItem.addClass('selected');
             $(document.body).animate({
-                'scrollTop':   $('#' + clickedItem.attr('scrollTo')).offset().top - $('.fixed-header').height() - 50
+                'scrollTop':   $('#' + clickedItem.attr('scrollTo')).offset().top - $('.fixed-header').height()
             }, 300);
         });
 

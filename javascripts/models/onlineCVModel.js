@@ -54,11 +54,9 @@ var onlineCVModel = baseModel.extend({
                 ],
 
                 conclusions: [
-                    "Catch attention with cool and creative stuff",
+                    'Make the "resume creation process" fun & creative',
                     "Give power to advanced users",
-                    'Make the "resume creation process" fun',
-                    "Give templates to less creative people",
-                    "Show progress in the resume creation process"
+                    "Give templates to less creative people"
                 ]
             },
             navModel: {
@@ -68,18 +66,20 @@ var onlineCVModel = baseModel.extend({
                 content:
                     [
                         {
-                            problem: 'The "Resume creation process" is long',
-                            solution: 'We should do it as a wizard (but a cool one)'
+                            image: "./images/MyOnlineCV/wireframes/pick_an_animal.png"
                         },
                         {
-                            problem: 'In the creative field there is a need for multiple resumes (custom for each employer)',
-                            solution: 'We should have a Dashboard'
+                            image: "./images/MyOnlineCV/wireframes/dashboard_advanced.png"
                         },
                         {
-                            problem: 'We want to catch attention quickly',
-                            solution: 'You can fill in the resume without signing up. Sign up only when sending your resume'
+                            image: "./images/MyOnlineCV/wireframes/job_exp.png"
                         }
                     ]
+            },
+
+            prototype: {
+                image: "./images/MyOnlineCV/wireframes/homepage.png",
+                url: "http://invis.io/PZSI2RHK"
             }
         }
     }

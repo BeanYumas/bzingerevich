@@ -384,9 +384,6 @@ body #siteContainer .row-fluid #content-container .my-work-entry .entry-content 
   position: absolute;
   top: 50px;
 }
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section {
-  height: 1350px;
-}
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section .sub-section {
   color: #545555;
   font-size: 2rem;
@@ -394,7 +391,8 @@ body #siteContainer .row-fluid #content-container .my-work-entry .entry-content 
   padding-top: 80px;
 }
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section .sub-section .title {
-  padding-bottom: 20px;
+  padding-bottom: 30px;
+  font-weight: 400;
 }
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section .sub-section .content {
   font-size: 1.4rem;
@@ -428,11 +426,13 @@ body #siteContainer .row-fluid #content-container .my-work-entry .entry-content 
   margin: 0px !important;
 }
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#research .bx-wrapper .bx-viewport {
-  background: #F0F0F0;
-  padding: 35px 10px;
+  padding: 15px 10px;
 }
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#research .business-goals {
   padding-top: 0px;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#research .business-goals .goals-content p {
+  margin-top: 0px;
 }
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#research .persona-slider .persona-image {
   margin: auto  ;
@@ -446,12 +446,18 @@ body #siteContainer .row-fluid #content-container .my-work-entry .entry-content 
 }
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#research .persona-slider .persona-container {
   margin-top: -50px;
-  height: 350px;
+  height: 400px;
 }
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#research .persona-slider .persona-container .persona-details {
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#research .persona-slider .persona-container .persona-details,
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#research .persona-slider .persona-container .persona-profession {
   text-align: center;
   font-size: 1.4rem;
   margin: 10px;
+  line-height: 1.4;
+  font-weight: 300;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#research .persona-slider .persona-container .persona-profession {
+  font-weight: 200;
 }
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#research .persona-slider .persona-container .persona-needs {
   text-align: center;
@@ -463,6 +469,8 @@ body #siteContainer .row-fluid #content-container .my-work-entry .entry-content 
   text-align: center;
   font-size: 1.4rem;
   margin: 10px;
+  line-height: 1.4;
+  font-weight: 300;
   font-weight: 400;
   text-decoration: underline;
 }
@@ -472,32 +480,49 @@ body #siteContainer .row-fluid #content-container .my-work-entry .entry-content 
   text-align: center;
   height: 340px;
 }
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#nav-model .screen-flow-details {
+  width: 70%;
+}
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#nav-model .screen-flow-details .nav-image {
+  cursor: pointer;
   height: 600px;
-  background-size: 70%;
-  background-repeat: no-repeat;
 }
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#nav-model .screen-flow-details .problem {
-  top: 70px;
-  position: relative;
-  font-size: 1.6rem;
-  border: 1px solid #545555;
-  line-height: 1.6;
-  padding: 10px;
-  text-align: center;
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#nav-model .screen-flow-details .nav-image:hover {
+  box-shadow: 1px 2px 15px #494949;
+  transition: all 0.2s ease-out;
 }
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#nav-model .screen-flow-details .arrow {
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#wireframes .conclusion-wireframe {
+  padding: 60px 40px;
+  color: #545555;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#wireframes .conclusion-wireframe.firstRow {
+  padding-top: 20px;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#wireframes .conclusion-wireframe .arrow {
   position: relative;
   top: 50px;
   padding: 30px;
-  font-size: 4rem;
+  font-size: 5rem;
+  text-align: center;
 }
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#nav-model .screen-flow-details .light-bulb {
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#wireframes .conclusion-wireframe .light-bulb {
   width: 250px;
   height: 400px;
 }
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#nav-model .screen-flow-details .light-bulb .conclusion-details {
-  width: 60%;
-  font-size: 1.4rem;
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#wireframes .conclusion-wireframe .light-bulb .conclusion-details {
+  width: 65%;
+  font-size: 1.3rem;
   text-align: center;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#wireframes .conclusion-wireframe .wireframe-image {
+  cursor: pointer;
+  height: 400px;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#wireframes .conclusion-wireframe .wireframe-image:hover {
+  box-shadow: 1px 2px 15px #494949;
+  transition: all 0.2s ease-out;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .proto-image {
+  box-shadow: 1px 2px 15px #494949;
+  transition: all 0.2s ease-out;
 }

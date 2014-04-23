@@ -434,7 +434,6 @@ body{
             top: 50px;
 
             section {
-              height: 1350px;
 
               .sub-section {
                 color: @bz-txt-gray;
@@ -443,7 +442,8 @@ body{
                 padding-top: 80px;
 
                 .title {
-                  padding-bottom: 20px;
+                  padding-bottom: 30px;
+                  font-weight: 400;
                 }
 
                 .content {
@@ -485,13 +485,18 @@ body{
                   margin: 0px !important;
 
                   .bx-viewport {
-                    background: #F0F0F0;
-                    padding: 35px 10px;
+                    padding: 15px 10px;
                   }
                 }
 
                 .business-goals {
                   padding-top: 0px;
+
+                  .goals-content {
+                    p {
+                      margin-top: 0px;
+                    }
+                  }
                 }
 
                 .persona-slider {
@@ -508,11 +513,17 @@ body{
 
                   .persona-container {
                     margin-top: -50px;
-                    height: 350px;
-                    .persona-details {
+                    height: 400px;
+                    .persona-details, .persona-profession {
                       text-align: center;
                       font-size: 1.4rem;
                       margin: 10px;
+                      line-height: 1.4;
+                      font-weight: 300;
+                    }
+
+                    .persona-profession {
+                      font-weight: 200;
                     }
 
                     .persona-needs {
@@ -544,27 +555,33 @@ body{
 
               &#nav-model{
                 .screen-flow-details {
+                  width: 70%;
                   .nav-image {
+                    cursor: pointer;
                     height: 600px;
-                    background-size: 70%;
-                    background-repeat: no-repeat;
-                  }
 
-                  .problem {
-                    top: 70px;
-                    position: relative;
-                    font-size: 1.6rem;
-                    border: 1px solid @bz-txt-gray;
-                    line-height: 1.6;
-                    padding: 10px;
-                    text-align: center;
+                    &:hover {
+                        box-shadow: 1px 2px 15px rgb(73, 73, 73);
+                        transition: all 0.2s ease-out;
+                    }
                   }
+                }
+              }
 
+              &#wireframes{
+               .conclusion-wireframe {
+                 padding: 60px 40px;
+                 color: @bz-txt-gray;
+
+                 &.firstRow {
+                   padding-top: 20px;
+                 }
                   .arrow {
                     position: relative;
                     top: 50px;
                     padding: 30px;
-                    font-size: 4rem;
+                    font-size: 5rem;
+                    text-align: center;
                   }
 
                   .light-bulb {
@@ -572,11 +589,29 @@ body{
                     height: 400px;
 
                     .conclusion-details {
-                      width: 60%;
-                      font-size: 1.4rem;
+                      text-align: center;
+                      width: 65%;
+                      font-size: 1.3rem;
                       text-align: center;
                     }
                   }
+
+                 .wireframe-image {
+                   cursor: pointer;
+                   height: 400px;
+
+                   &:hover {
+                     box-shadow: 1px 2px 15px rgb(73, 73, 73);
+                     transition: all 0.2s ease-out;
+                   }
+                 }
+               }
+              }
+
+              &#prototype {
+                .proto-image {
+                  box-shadow: 1px 2px 15px rgb(73, 73, 73);
+                  transition: all 0.2s ease-out;
                 }
               }
             }
