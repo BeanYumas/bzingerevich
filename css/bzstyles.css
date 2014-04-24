@@ -439,7 +439,7 @@ body #siteContainer .row-fluid #content-container .my-work-entry .entry-content 
   border-radius: 160px;
   height: 160px;
   background-repeat: no-repeat;
-  background-position: 80% 5%;
+  background-position: 50% 50%;
   border: 3px solid #a7a9a9;
 }
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#research .persona-slider .persona-container {
@@ -520,7 +520,7 @@ body #siteContainer .row-fluid #content-container .my-work-entry .entry-content 
   box-shadow: 1px 2px 15px #494949;
   transition: all 0.2s ease-out;
 }
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .proto-image {
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .proto-image:hover {
   box-shadow: 1px 2px 15px #494949;
   transition: all 0.2s ease-out;
 }
