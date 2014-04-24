@@ -163,6 +163,8 @@ var myWorkEntry = View.extend({
 
 
         this.attachFancyBox();
+
+        this.calculateSections();
     },
 
     attachFancyBox: function() {
@@ -202,13 +204,34 @@ var myWorkEntry = View.extend({
     },
 
     scrolled: function(self) {
-        var sectionHeight = $('.entry-content section').height();
-        var sectionNum = Math.floor(($(document.body).scrollTop() +160)/sectionHeight);
+        var sectionNum = self.findSectionNumber(self)
 
         if(self.currSection != sectionNum) {
             self.currSection = sectionNum;
             var allMenuItems = $('.menu-item a').removeClass('selected');
             $(allMenuItems[sectionNum]).addClass('selected');
+        }
+    },
+
+    calculateSections: function() {
+        var self = this;
+        var sections = $('.entry-content section');
+        self.sectionsDistanceFromTop = [];
+        var distanceFromTop = 0;
+        self.sectionsDistanceFromTop.push(distanceFromTop);
+        $.each(sections, function(index, section) {
+            self.sectionsDistanceFromTop.push(distanceFromTop + $(section).height());
+            distanceFromTop = distanceFromTop + $(section).height();
+        });
+    },
+
+    findSectionNumber: function(self) {
+        var scroll = $(document.body).scrollTop() + 200;
+        for(var i=0; i < self.sectionsDistanceFromTop.length; i++) {
+            if(i == self.sectionsDistanceFromTop.length ||
+                (scroll >= self.sectionsDistanceFromTop[i] && scroll < self.sectionsDistanceFromTop[i+1])) {
+                return i;
+            }
         }
     },
 
