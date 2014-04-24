@@ -375,13 +375,11 @@ body #siteContainer .row-fluid #content-container .my-work-list .work-entry .my-
   width: 80%;
 }
 body #siteContainer .row-fluid #content-container .my-work-entry {
-  top: 160px;
+  top: 200px;
   margin-left: 0px;
   position: relative;
-  height: 100%;
 }
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content {
-  position: absolute;
   top: 50px;
 }
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section .sub-section {

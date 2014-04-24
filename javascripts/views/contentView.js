@@ -32,21 +32,25 @@ var contentView = View.extend({
     replaceContent: function(toView, animation) {
         var self = this;
         var currViewRendered = $('#content-container').children();
-        if(self.currView.destroy) {
-            self.currView.destroy();
-        }
+        var oldView = self.currView;
         self.currView = self.allViews[toView];
         var newViewRendered = self.currView.render();
 
+        var destroy = function() {
+            if(oldView.destroy) {
+                oldView.destroy();
+            }
+        }
+
         switch(animation) {
             case 'fadeOut' :
-               self.fadeReplacement(currViewRendered, newViewRendered);
+               self.fadeReplacement(currViewRendered, newViewRendered, destroy);
                break;
             case 'hideLeft':
-                self.hideLeft(currViewRendered, newViewRendered);
+                self.hideLeft(currViewRendered, newViewRendered, destroy);
                 break;
             default:
-                self.fadeReplacement(currViewRendered, newViewRendered);
+                self.fadeReplacement(currViewRendered, newViewRendered, destroy);
                 break;
         }
         self.controller.contentViewReplaced(toView);
@@ -82,14 +86,17 @@ var contentView = View.extend({
         return (this.currView instanceof myWorkEntry) && this.currMyWorkItem < this.myWorkModels.length-1;
     },
 
-    fadeReplacement: function(currView, nextView) {
+    fadeReplacement: function(currView, nextView, cb) {
         var self = this;
         nextView.css("display", "none");
         currView.fadeOut(300, function() {
-            $(document.body).scrollTop(0);
+            $('#content-container').children().remove();
             $('#content-container').append(nextView);
-            nextView.fadeIn(300);
-            currView.remove();
+
+            $(document.body).scrollTop(0);
+            nextView.fadeIn(300, function() {
+                cb();
+            });
             if(self.currView.afterShowView)
             {
                 self.currView.afterShowView();
@@ -97,7 +104,7 @@ var contentView = View.extend({
         });
     },
 
-    hideLeft: function(currView, nextView) {
+    hideLeft: function(currView, nextView, cb) {
         var container = $('#content-container');
         container.css({"overflow-x" : "hidden"});
         var contentViewWidth = container.width();
@@ -105,6 +112,7 @@ var contentView = View.extend({
         container.append(nextView);
         currView.animate({left: -contentViewWidth}, 300, "linear", function() {
             currView.remove();
+            cb();
             container.css({"overflow-x" : "visible"});
         });
 
