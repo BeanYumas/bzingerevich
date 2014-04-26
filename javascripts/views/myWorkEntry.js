@@ -15,7 +15,21 @@ var myWorkEntry = View.extend({
 
     render: function() {
         var self = this;
-        self.content = $("<div class='entry-container'><div class='my-work-entry content-view'>" +
+        self.content = $("<div class='entry-container'></div>").append(self.createContent());
+
+        self.addHeader();
+
+        self.fillContent(self.content);
+
+        $(window).scroll(function(){
+            self.scrolled(self);
+        });
+
+        return self.content;
+    },
+
+    createContent: function() {
+        return $("<div class='my-work-entry content-view'>" +
             "<div class='entry-content'><section id='research'><div class='sub-section business-goals'><div class='title'>What are the Business Goals?</div></div>" +
             "<div class='sub-section personas'><div class='title'>Who are the Users?</div></div>" +
             "<div class='sub-section conclusions'><div class='title'>Conclusions</div></div>" +
@@ -23,17 +37,7 @@ var myWorkEntry = View.extend({
             "<section id='nav-model'><div class='sub-section navigation-tree'><div class='title'>What is the screen flow?</div>" +
             "<div class='screen-flow-details'></div></div></section>" +
             "<section id='wireframes'><div class='sub-section'><div class='title'>Show me some screens!</div></div></section>" +
-            "<section id='prototype'><div class='sub-section'><div class='title'>Let me try it!</div></div></section></div></div></div>");
-
-        self.addHeader();
-
-        self.fillContent();
-
-        $(window).scroll(function(){
-            self.scrolled(self);
-        });
-
-        return self.content;
+            "<section id='prototype'><div class='sub-section'><div class='title'>Let me try it!</div></div></section></div></div>");
     },
     ///////////////  research part //////////////////////////
 
@@ -187,20 +191,20 @@ var myWorkEntry = View.extend({
         );
     },
 
-    fillContent: function() {
+    fillContent: function(elementToFill) {
         //research
-        $('.business-goals', this.content).append(this.getBusinessGoals());//businessGoals
-        $('.personas', this.content).append(this.getPersonas());//personas
-        $('.conclusions', this.content).append(this.getConclusions()); //conclusions
+        $('.business-goals', elementToFill).append(this.getBusinessGoals());//businessGoals
+        $('.personas', elementToFill).append(this.getPersonas());//personas
+        $('.conclusions', elementToFill).append(this.getConclusions()); //conclusions
 
         //nav-model
-        $('.screen-flow-details', this.content).append(this.getNavModel());
+        $('.screen-flow-details', elementToFill).append(this.getNavModel());
 
         //wireframes
-        $('#wireframes', this.content).append(this.getWireframes());
+        $('#wireframes', elementToFill).append(this.getWireframes());
 
         //prototype
-        $('#prototype', this.content).append(this.getPrototype());
+        $('#prototype', elementToFill).append(this.getPrototype());
     },
 
     scrolled: function(self) {
@@ -261,27 +265,106 @@ var myWorkEntry = View.extend({
     },
 
 
+    toggleHeaderBtns: function (headerToFill) {
+        var self = this;
+        var nextBtn = $(".my-next-work", headerToFill);
+        if(nextBtn) {
+            if (this.container.showNextWorkBtn()) {//there is a next button
+                nextBtn.css('display', 'table-cell');
+                nextBtn.off("click");
+                nextBtn.click(function () {
+                    self.container.nextWorkClicked.call(self.container)
+                });
+            }
+            else {
+                nextBtn.css('display', 'none');
+            }
+        }
+
+        var prevBtn = $(".my-prev-work", headerToFill);
+
+        if(prevBtn)
+        {
+            if (this.container.showPrevWorkBtn()) {//there is a next button
+                prevBtn.css('display', 'table-cell');
+                $('.entry-name', headerToFill).css('padding-left', '30px');
+                prevBtn.off("click");
+                prevBtn.click(function () {
+                    self.container.prevWorkClicked.call(self.container)
+                });
+            }
+            else {
+                prevBtn.css('display', 'none');
+                $('.entry-name', headerToFill).css('padding-left', '5%');
+            }
+        }
+    },
 
     fillDescriptionToHeader: function(headerToFill) {
         var self = this;
         headerToFill.prepend("<div class='entryDetails'><div class='my-prev-work'><div>< Prev Work</div></div><div class='entry-name'>" + this.model.getData().entryName +"</div>" +
             "<div class='entry-description'><div>" + this.model.getData().entryDescription +"</div></div>" +
             "<div class='my-next-work'><div>Next Work ></div></div></div>");
-        if(this.container.showNextWorkBtn()) {//there is a next button
-            var nextBtn = $(".my-next-work", headerToFill);
-            nextBtn.css('display', 'table-cell');
-            nextBtn.click(function() {
-                self.container.nextWorkClicked.call(self.container)
-            });
-        }
 
-        if(this.container.showPrevWorkBtn()) {//there is a next button
-            var prevBtn = $(".my-prev-work", headerToFill);
-            prevBtn.css('display', 'table-cell');
-            $('.entry-name', headerToFill).css('padding-left', '30px');
-            prevBtn.click(function() {
-                self.container.prevWorkClicked.call(self.container)
-            });
+        self.toggleHeaderBtns(headerToFill, self);
+    },
+
+    replaceHeaderContent: function(headerToFill) {
+        var self = this;
+       $('.entry-name, .entry-description').fadeOut( function() {
+           $('.entry-name').html(self.model.getData().entryName);
+           $('.entry-description div').html(self.model.getData().entryDescription);
+           $('.entry-name, .entry-description').fadeIn();
+           self.toggleHeaderBtns(headerToFill);
+       });
+    },
+
+    replaceEntryContent: function(model, direction) {
+        var self = this;
+        this.model = model;
+        var newContent =  self.createContent();
+        self.fillContent(newContent);
+
+        var container = $('.entry-container');
+        container.css({"overflow-x" : "hidden"});
+        var contentViewWidth = container.width();
+        var oldContent = $('.my-work-entry');
+
+        switch(direction) {
+            case "left":
+                newContent.hide().css({left: contentViewWidth});
+                container.append(newContent);
+                oldContent.animate({left: -contentViewWidth}, 300, "linear", function() {
+                    oldContent.remove();
+                });
+
+
+                newContent.show(function() {
+                    self.afterShowView();
+                });
+                self.replaceHeaderContent($('.fixed-header'));
+
+                newContent.animate({left: 0}, 300, "linear", function () {
+                    container.css({"overflow-x" : "visible"});
+                });
+                break;
+            case "right":
+                newContent.hide().css({left: -contentViewWidth});
+                container.append(newContent);
+                oldContent.animate({left: contentViewWidth}, 300, "linear", function() {
+                    oldContent.remove();
+                });
+
+
+                newContent.show(function() {
+                    self.afterShowView();
+                });
+                self.replaceHeaderContent($('.fixed-header'));
+
+                newContent.animate({left: 0}, 300, "linear", function () {
+                    container.css({"overflow-x" : "visible"});
+                });
+                break;
         }
     },
 

@@ -84,7 +84,7 @@ body #siteContainer .row-fluid #sidebar-container #sidebar .menu .mItem:hover:no
 body #siteContainer .row-fluid #content-container {
   display: inline-block;
   margin: 0px;
-  position: relative;
+  position: absolute;
   height: 100%;
   width: 78%;
 }

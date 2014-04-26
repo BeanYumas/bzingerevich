@@ -12,8 +12,8 @@ var contentView = View.extend({
 
         this.myWorkModels = [
             new csiAppModel(),
-            new slenderModel(),
             new onlineCVModel(),
+            new slenderModel()
         ];
 
         this.allViews = {
@@ -68,17 +68,23 @@ var contentView = View.extend({
        return (this.currView instanceof myWorkEntry) && this.currMyWorkItem > 0;
     },
 
+    replaceWorkItem: function(workItemIndex, direction) {
+        var self = this;
+        self.allViews["myWorkEntry"].replaceEntryContent(this.getMyWorkData(workItemIndex), direction);
+        self.currMyWorkItem = workItemIndex;
+    },
+
     prevWorkClicked: function() {
         if(this.currMyWorkItem > 0)
         {
-            this.myWorkItemClicked(this.currMyWorkItem - 1);
+            this.replaceWorkItem(this.currMyWorkItem - 1, "right");
         }
     },
 
     nextWorkClicked: function() {
         if(this.currMyWorkItem < this.myWorkModels.length-1)
         {
-            this.myWorkItemClicked(this.currMyWorkItem + 1);
+            this.replaceWorkItem(this.currMyWorkItem + 1, "left");
         }
     },
 
@@ -105,6 +111,7 @@ var contentView = View.extend({
     },
 
     hideLeft: function(currView, nextView, cb) {
+        var self = this;
         var container = $('#content-container');
         container.css({"overflow-x" : "hidden"});
         var contentViewWidth = container.width();
@@ -116,8 +123,15 @@ var contentView = View.extend({
             container.css({"overflow-x" : "visible"});
         });
 
-        nextView.show();
-        nextView.animate({left: 0}, 300, "linear");
+
+        nextView.show(function() {
+        });
+        nextView.animate({left: 0}, 300, "linear", function () {
+            if(self.currView.afterShowView)
+            {
+                self.currView.afterShowView();
+            }
+        });
     },
 
     hideRight: function(callback) {
