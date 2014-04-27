@@ -15,7 +15,7 @@ var contactView = View.extend({
         var self = this;
         self.content = $('<div class="contact content-view"><div class="contact-me">You can contact me via mail in <a class="my-email" target="_blank" href="mailto:benny@beeziko.com">benny@beeziko.com</a>' +
             '</div><div class="movies-header"><p>It will take me at least 6 seconds to respond.<br>So here is another 6 seconds worth spending:</p></div>' +
-            '<iframe width="420" height="315" src="http://www.youtube.com/embed/rfh4Mhp-a6U" frameborder="0" allowfullscreen></iframe>' +
+            '<iframe width="420" height="315" src="https://www.youtube.com/embed/rfh4Mhp-a6U" frameborder="0" allowfullscreen></iframe>' +
             '</div>');
 
         return self.content;

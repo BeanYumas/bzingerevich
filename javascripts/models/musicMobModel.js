@@ -54,7 +54,7 @@ var musicMobModel = baseModel.extend({
                         name: "Jeff",
                         age: "42",
                         profession: "The BBQ Guy",
-                        image: "./images/MusicMob/Personas/jeff.png",
+                        image: "./images/MusicMob/Personas/Jeff.png",
                         needs: "Be Simple<br>Feel Secured"
                     }
                 ],
