@@ -334,7 +334,7 @@ var myWorkEntry = View.extend({
             case "left":
                 newContent.hide().css({left: contentViewWidth});
                 container.append(newContent);
-                oldContent.animate({left: -contentViewWidth}, 300, "linear", function() {
+                oldContent.animate({left: -contentViewWidth}, 200, "linear", function() {
                     oldContent.remove();
                 });
 
@@ -344,14 +344,14 @@ var myWorkEntry = View.extend({
                 });
                 self.replaceHeaderContent($('.fixed-header'));
 
-                newContent.animate({left: 0}, 300, "linear", function () {
+                newContent.animate({left: 0}, 200, "linear", function () {
                     container.css({"overflow-x" : "visible"});
                 });
                 break;
             case "right":
                 newContent.hide().css({left: -contentViewWidth});
                 container.append(newContent);
-                oldContent.animate({left: contentViewWidth}, 300, "linear", function() {
+                oldContent.animate({left: contentViewWidth}, 200, "linear", function() {
                     oldContent.remove();
                 });
 
@@ -361,7 +361,7 @@ var myWorkEntry = View.extend({
                 });
                 self.replaceHeaderContent($('.fixed-header'));
 
-                newContent.animate({left: 0}, 300, "linear", function () {
+                newContent.animate({left: 0}, 200, "linear", function () {
                     container.css({"overflow-x" : "visible"});
                 });
                 break;

@@ -17,10 +17,9 @@ var csiAppModel = baseModel.extend({
             entryImage: "./images/csi_preview.png",
             research: {
                 businessGoals: [
-                    "Let the user Create Cool and innovative resumes",
-                    "Make the process of resume creation easy",
-                    "Give the user an advantage in the job searching market",
-                    "Brand MyOnlineCv as the place to create resumes for creative candidates"
+                    "Don't get in the way - make the work easier",
+                    "Use the SmartPhone abilities",
+                    "Be Innovative"
                 ],
                     personas: [
                     {

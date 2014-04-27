@@ -11,9 +11,9 @@ var contentView = View.extend({
         this.controller = controller;
 
         this.myWorkModels = [
+            new musicMobModel(),
             new csiAppModel(),
-            new onlineCVModel(),
-            new slenderModel()
+            new onlineCVModel()
         ];
 
         this.allViews = {
