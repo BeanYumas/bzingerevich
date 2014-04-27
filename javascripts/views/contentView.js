@@ -18,6 +18,7 @@ var contentView = View.extend({
 
         this.allViews = {
             'welcomeView' : new welcomeView(this),
+            'contact' : new contactView(),
             'whoAmI'      : new whoAmIView(this),
             'myWork'      : new myWorkList(this, this.myWorkModels)
         };

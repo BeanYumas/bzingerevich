@@ -322,10 +322,9 @@ body{
             .myImage {
               height: 125px;
               width: 125px;
-              background-image: url('../images/benny.jpg');
+              background-image: url('../images/benny.png');
               border-radius: 10px;
-              background-position: center;
-              background-size: contain;
+              background-size: cover;
             }
 
             .links {
@@ -616,6 +615,26 @@ body{
               }
             }
           }
+        }
+
+        .contact {
+          color: @bz-txt-gray;
+
+          .contact-me, .movies-header {
+            font-size: 1.4vw;
+            font-weight: 200;
+
+            a{
+              text-decoration: underline;
+              color: #2c2d2d;
+            }
+
+            &.movies-header {
+              line-height: 3vw;
+              padding-top: 50px;
+            }
+          }
+
         }
       }
     }

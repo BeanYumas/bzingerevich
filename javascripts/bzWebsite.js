@@ -32,26 +32,23 @@
     $(document).ready(function(){
 
         var arrayOfImages = [
+            "./images/MusicMob_preview.png",
+            "./images/myOnlineCv_preview.png",
+            "./images/csi_preview.png",
+            "./images/benny.png",
+            "./images/MusicMob/Personas/courtney.png",
+            "./images/MusicMob/Personas/geneysha.png",
+            "./images/MusicMob/Personas/roy.png",
+            "./images/MusicMob/Personas/jake.png",
+            "./images/MusicMob/Personas/jeff.png",
            "./images/MyOnlineCV/Personas/Ofri.png",
            "./images/MyOnlineCV/Personas/Oren.png",
             "./images/MyOnlineCV/Personas/Mosh.png",
             "./images/MyOnlineCV/Personas/Muhamad.png",
-            "./images/myOnlineCv_preview.png",
-            "./images/MyOnlineCV/nav-tree.png",
-            "./images/MyOnlineCV/wireframes/pick_an_animal.png",
-            "./images/MyOnlineCV/wireframes/dashboard_advanced.png",
-            "./images/MyOnlineCV/wireframes/job_exp.png",
-            "./images/MyOnlineCV/wireframes/homepage.png",
             "./images/CSIMobileApp/Personas/Joe.png",
             "./images/CSIMobileApp/Personas/Allan.png",
             "./images/CSIMobileApp/Personas/Rachel.png",
-            "./images/CSIMobileApp/Personas/Omar.png",
-            "./images/csi_preview.png",
-            "./images/CSIMobileApp/nav-tree.png",
-            "./images/CSIMobileApp/wireframes/added_evidence.png",
-            "./images/CSIMobileApp/wireframes/crime_scene_list.png",
-            "./images/CSIMobileApp/wireframes/add_photo.png",
-            "./images/CSIMobileApp/wireframes/hello.png"
+            "./images/CSIMobileApp/Personas/Omar.png"
         ];
         $(arrayOfImages).each(function(){
                 $('<img/>')[0].src = this;

@@ -294,10 +294,9 @@ body #siteContainer .row-fluid #content-container .my-resume .myProfile {
 body #siteContainer .row-fluid #content-container .my-resume .myProfile .myImage {
   height: 125px;
   width: 125px;
-  background-image: url('../images/benny.jpg');
+  background-image: url('../images/benny.png');
   border-radius: 10px;
-  background-position: center;
-  background-size: contain;
+  background-size: cover;
 }
 body #siteContainer .row-fluid #content-container .my-resume .myProfile .links {
   bottom: 0px;
@@ -523,4 +522,22 @@ body #siteContainer .row-fluid #content-container .my-work-entry .entry-content 
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .proto-image:hover {
   box-shadow: 1px 2px 15px #494949;
   transition: all 0.2s ease-out;
+}
+body #siteContainer .row-fluid #content-container .contact {
+  color: #545555;
+}
+body #siteContainer .row-fluid #content-container .contact .contact-me,
+body #siteContainer .row-fluid #content-container .contact .movies-header {
+  font-size: 1.4vw;
+  font-weight: 200;
+}
+body #siteContainer .row-fluid #content-container .contact .contact-me a,
+body #siteContainer .row-fluid #content-container .contact .movies-header a {
+  text-decoration: underline;
+  color: #2c2d2d;
+}
+body #siteContainer .row-fluid #content-container .contact .contact-me.movies-header,
+body #siteContainer .row-fluid #content-container .contact .movies-header.movies-header {
+  line-height: 3vw;
+  padding-top: 50px;
 }
