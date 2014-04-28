@@ -171,6 +171,9 @@ var myWorkEntry = View.extend({
         this.attachFancyBox();
 
         this.calculateSections();
+
+        this.currSection = 0;
+        this.scrolled(this);
     },
 
     attachFancyBox: function() {
@@ -232,7 +235,7 @@ var myWorkEntry = View.extend({
     },
 
     findSectionNumber: function(self) {
-        var scroll = $(document.body).scrollTop() + 200;
+        var scroll = $(window).scrollTop() + 200;
         for(var i=0; i < self.sectionsDistanceFromTop.length; i++) {
             if(i == self.sectionsDistanceFromTop.length ||
                 (scroll >= self.sectionsDistanceFromTop[i] && scroll < self.sectionsDistanceFromTop[i+1])) {
@@ -256,7 +259,7 @@ var myWorkEntry = View.extend({
             var clickedItem = $(this);
             $('.menu-item a').removeClass('selected');
             clickedItem.addClass('selected');
-            $(document.body).animate({
+            $('body,html').animate({
                 'scrollTop':   $('#' + clickedItem.attr('scrollTo')).offset().top - $('.fixed-header').height()
             }, 300);
         });
@@ -323,7 +326,7 @@ var myWorkEntry = View.extend({
 
     replaceEntryContent: function(model, direction) {
         var self = this;
-        this.model = model;
+        self.model = model;
         var newContent =  self.createContent();
         self.fillContent(newContent);
 
