@@ -20,8 +20,11 @@ var contentView = View.extend({
             'welcomeView' : new welcomeView(this),
             'contact' : new contactView(),
             'whoAmI'      : new whoAmIView(this),
-            'myWork'      : new myWorkList(this, this.myWorkModels)
+            'myWork'      : new myWorkList(this, this.myWorkModels),
+            'myWorkEntry'      : new myWorkEntry(this, this.getMyWorkData(0))
         };
+
+        this.currMyWorkItem = 0;
 
         this.currView = this.allViews.welcomeView;
     },
@@ -32,6 +35,13 @@ var contentView = View.extend({
 
     replaceContent: function(toView, animation) {
         var self = this;
+
+        if(toView == "myWorkEntry") {
+            delete self.allViews["myWorkEntry"];
+            self.allViews["myWorkEntry"] = new myWorkEntry(this, this.getMyWorkData(0));
+            self.currMyWorkItem = 0;
+        }
+
         var currViewRendered = $('#content-container').children();
         var oldView = self.currView;
         self.currView = self.allViews[toView];
@@ -54,7 +64,9 @@ var contentView = View.extend({
                 self.fadeReplacement(currViewRendered, newViewRendered, destroy);
                 break;
         }
-        self.controller.contentViewReplaced(toView);
+
+        var replacemebtView = (toView == "myWorkEntry")? "myWork" : toView;
+        self.controller.contentViewReplaced(replacemebtView);
     },
 
     myWorkItemClicked: function(workIndex) {

@@ -37,7 +37,7 @@ var myWorkEntry = View.extend({
             "<section id='nav-model'><div class='sub-section navigation-tree'><div class='title'>What is the screen flow?</div>" +
             "<div class='screen-flow-details'></div></div></section>" +
             "<section id='wireframes'><div class='sub-section'><div class='title'>Show me some screens!</div></div></section>" +
-            "<section id='prototype'><div class='sub-section'><div class='title'>Let me try it!</div></div></section></div></div>");
+            "<section id='prototype'></div></div>");
     },
     ///////////////  research part //////////////////////////
 
@@ -133,7 +133,9 @@ var myWorkEntry = View.extend({
 
     getPrototype: function() {
         var prototype = this.model.getData().prototype;
-        var image = $("<a target='_blank' title='click to open prototype in invision' href='" + prototype.url + "'><img class='proto-image' src='" + prototype.image + "'></a>");
+        var image = $("<div class='sub-section'><div class='title prototype-title'>Open Live Prototype</div>" +
+            "<a target='_blank' title='click to open prototype in invision' href='" + prototype.url + "'><img class='proto-image' src='" + prototype.image + "'></a>" +
+            "</div></section>");
 
         return image;
     },

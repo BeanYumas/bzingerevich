@@ -32,15 +32,13 @@
     $(document).ready(function(){
 
         var arrayOfImages = [
-            "./images/MusicMob_preview.png",
-            "./images/myOnlineCv_preview.png",
-            "./images/csi_preview.png",
             "./images/benny.png",
             "./images/MusicMob/Personas/courtney.png",
             "./images/MusicMob/Personas/geneysha.png",
             "./images/MusicMob/Personas/roy.png",
             "./images/MusicMob/Personas/jake.png",
             "./images/MusicMob/Personas/Jeff.png",
+            "./images/MusicMob/wireframes/homepage.png",
            "./images/MyOnlineCV/Personas/Ofri.png",
            "./images/MyOnlineCV/Personas/Oren.png",
             "./images/MyOnlineCV/Personas/Mosh.png",

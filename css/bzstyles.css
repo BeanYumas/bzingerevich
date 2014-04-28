@@ -292,11 +292,11 @@ body #siteContainer .row-fluid #content-container .my-resume .myProfile {
   position: relative;
 }
 body #siteContainer .row-fluid #content-container .my-resume .myProfile .myImage {
-  height: 125px;
-  width: 125px;
+  height: 122px;
+  width: 122px;
   background-image: url('../images/benny.png');
-  border-radius: 10px;
   background-size: cover;
+  border: 2px solid grey;
 }
 body #siteContainer .row-fluid #content-container .my-resume .myProfile .links {
   bottom: 0px;
@@ -519,9 +519,21 @@ body #siteContainer .row-fluid #content-container .my-work-entry .entry-content 
   box-shadow: 1px 2px 15px #494949;
   transition: all 0.2s ease-out;
 }
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .proto-image:hover {
-  box-shadow: 1px 2px 15px #494949;
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .sub-section {
+  text-decoration: none;
+  cursor: pointer;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .sub-section .proto-image {
+  height: 500px;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .sub-section:hover .prototype-title {
+  color: #0080ff;
+  text-decoration: underline;
   transition: all 0.2s ease-out;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .sub-section:hover .proto-image {
+  transition: all 0.2s ease-out;
+  box-shadow: 1px 2px 15px #494949;
 }
 body #siteContainer .row-fluid #content-container .contact {
   color: #545555;

@@ -320,11 +320,11 @@ body{
             position: relative;
 
             .myImage {
-              height: 125px;
-              width: 125px;
+              height: 122px;
+              width: 122px;
               background-image: url('../images/benny.png');
-              border-radius: 10px;
               background-size: cover;
+              border: 2px solid grey;
             }
 
             .links {
@@ -606,10 +606,26 @@ body{
               }
 
               &#prototype {
-                .proto-image {
+
+                .sub-section {
+                  text-decoration: none;
+                  cursor: pointer;
+
+                  .proto-image {
+                    height: 500px;
+                  }
+
+
                   &:hover {
-                    box-shadow: 1px 2px 15px rgb(73, 73, 73);
-                    transition: all 0.2s ease-out;
+                    .prototype-title {
+                      color: @bz-blue;
+                      text-decoration: underline;
+                      transition: all 0.2s ease-out;
+                    }
+                    .proto-image {
+                        transition: all 0.2s ease-out;
+                        box-shadow: 1px 2px 15px rgb(73, 73, 73);
+                    }
                   }
                 }
               }

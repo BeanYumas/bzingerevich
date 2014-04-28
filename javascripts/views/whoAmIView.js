@@ -12,9 +12,9 @@ var whoAmIView = View.extend({
     {
         experience: {
             header: "Experience",
-            entryContent: "<p>I am a UX Designer and a web developer.</p><p>I have been UXing (yeah, that's a new verb) for the past 5 years, and coding " +
+            entryContent: "<p>I am a UX Designer and a web developer.</p><p>I have been UXing for the past 5 years, and coding " +
                     'for the past 7.</p><p>I was a co-founder and Chief product officer of beeziko LTD (an Ed Tech startup).</p>' +
-                    "<p>I worked as a front-end web developer @ Pluralis LTD. and as a front-end (back then it was GUI) Developer @ CheckPoint Software Technologies.</p>"
+                    "<p>I worked as a front-end web developer @ Pluralis LTD. and as a front-end Developer @ CheckPoint Software Technologies.</p>"
         },
 
         skills: {

@@ -23,7 +23,7 @@ var sideBar = View.extend({
             },
             myWork: {
                 click: function() {
-                    self.controller.replaceContentView("myWork");
+                    self.controller.replaceContentView("myWorkEntry");
                 },
                 text: "My Work"
             },
