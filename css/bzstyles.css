@@ -526,6 +526,10 @@ body #siteContainer .row-fluid #content-container .my-work-entry .entry-content 
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .sub-section .proto-image {
   height: 500px;
 }
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .sub-section a {
+  color: #545555;
+  text-decoration: none;
+}
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .sub-section:hover .prototype-title {
   color: #0080ff;
   text-decoration: underline;

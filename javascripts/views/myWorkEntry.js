@@ -133,8 +133,8 @@ var myWorkEntry = View.extend({
 
     getPrototype: function() {
         var prototype = this.model.getData().prototype;
-        var image = $("<div class='sub-section'><div class='title prototype-title'>Open Live Prototype</div>" +
-            "<a target='_blank' title='click to open prototype in invision' href='" + prototype.url + "'><img class='proto-image' src='" + prototype.image + "'></a>" +
+        var image = $("<div class='sub-section'>" +
+            "<a target='_blank' title='click to open prototype in invision' href='" + prototype.url + "'><div class='title prototype-title'>Open Live Prototype</div><img class='proto-image' src='" + prototype.image + "'></a>" +
             "</div></section>");
 
         return image;
