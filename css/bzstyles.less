@@ -144,13 +144,12 @@ body{
                 height: 100%;
                 font-weight: 300;
                 vertical-align: middle;
-                width: 15%;
-                text-align: center;
+                width: 10%;
+                text-align: left;
                 padding-left: 5%;
               }
 
               .nav-btn {
-                transition: all 0.3s ease-out;
                 display: none;
                 text-align: center;
                 height: 100%;
@@ -164,25 +163,27 @@ body{
                 color: #ffffff;
                 font-weight: 100;
 
+                div {
+                  border: 1px solid white;
+                  font-weight: 300;
+                  transition: all 0.3s ease-out;
+                }
+
                 &:hover {
-                  text-decoration: underline;
-                  color: #ffffff;
+
+                  div {
+                    color: @bz-green;
+                    background: #ffffff;
+                  }
                 }
               }
               .my-next-work {
                 .nav-btn;
 
-                div {
-                  border-left: 1px solid white;
-                }
               }
 
               .my-prev-work {
                 .nav-btn;
-
-                div {
-                  border-right: 1px solid white;
-                }
               }
 
               .entry-description {
@@ -195,7 +196,7 @@ body{
                 line-height: 1.6;
 
                 div {
-                  padding-left: 35px;
+                  padding-left: 15px;
                 }
               }
           }
@@ -608,9 +609,6 @@ body{
               &#prototype {
 
                 .sub-section {
-                  text-decoration: none;
-                  cursor: pointer;
-
                   .proto-image {
                     height: 500px;
                   }
@@ -618,18 +616,55 @@ body{
                   a {
                     color: @bz-txt-gray;
                     text-decoration: none;
-                  }
 
-                  &:hover {
-                    .prototype-title {
-                      color: @bz-blue;
-                      text-decoration: underline;
-                      transition: all 0.2s ease-out;
-                    }
-                    .proto-image {
+                    &:hover {
+                      .prototype-title {
+                        color: @bz-blue;
+                        text-decoration: underline;
+                        transition: all 0.2s ease-out;
+                      }
+                      .proto-image {
                         transition: all 0.2s ease-out;
                         box-shadow: 1px 2px 15px rgb(73, 73, 73);
+                      }
                     }
+                  }
+
+                }
+
+                .next-work-preview {
+//                  opacity: 0;
+                  display: none;
+                  position: fixed;
+                  bottom: 50px;
+                  background: #C9C9C9;
+                  border: solid 1px #B3B3B3;
+                  height: 150px;
+                  width: 240px;
+                  cursor: pointer;
+                  box-shadow: 0px 1px 2px 2px rgb(195, 193, 193);
+                  padding: 15px;
+
+                  &:hover {
+                    text-decoration: underline;
+                  }
+
+                  .next-work-header {
+                    font-weight: 400;
+                    font-size: 20px;
+                    transition: all 0.3s ease-out;
+                    cursor: pointer;
+                    margin-bottom: 20px;
+                  }
+
+                  .next-work-preview-text {
+                    padding: 10px;
+                  }
+
+                  .next-work-preview-img {
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                      height: 75%;
                   }
                 }
               }
@@ -638,6 +673,7 @@ body{
         }
 
         .contact {
+
           color: @bz-txt-gray;
 
           .contact-me, .movies-header {

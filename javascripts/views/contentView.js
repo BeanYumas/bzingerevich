@@ -67,6 +67,8 @@ var contentView = View.extend({
 
         var replacemebtView = (toView == "myWorkEntry")? "myWork" : toView;
         self.controller.contentViewReplaced(replacemebtView);
+
+        ga('send', 'event', 'viewReplaced', 'nextWorkClicked', toView);
     },
 
     myWorkItemClicked: function(workIndex) {
@@ -83,7 +85,9 @@ var contentView = View.extend({
 
     replaceWorkItem: function(workItemIndex, direction) {
         var self = this;
-        self.allViews["myWorkEntry"].replaceEntryContent(this.getMyWorkData(workItemIndex), direction);
+        var workData = this.getMyWorkData(workItemIndex);
+        ga('send', 'event', 'viewReplaced', 'nextWorkClicked', workData.getData().entryName);
+        self.allViews["myWorkEntry"].replaceEntryContent(workData, direction);
         self.currMyWorkItem = workItemIndex;
     },
 
@@ -93,6 +97,16 @@ var contentView = View.extend({
             this.replaceWorkItem(this.currMyWorkItem - 1, "right");
         }
     },
+
+    getNextWorkData: function() {
+        var data = null;
+        if(this.currMyWorkItem < this.myWorkModels.length-1) {
+            var self = this;
+            data = self.getMyWorkData(self.currMyWorkItem + 1);
+        }
+        return data;
+    },
+
 
     nextWorkClicked: function() {
         if(this.currMyWorkItem < this.myWorkModels.length-1)

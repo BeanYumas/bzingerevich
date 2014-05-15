@@ -113,12 +113,11 @@ body #siteContainer .row-fluid #content-container .entry-container .fixed-header
   height: 100%;
   font-weight: 300;
   vertical-align: middle;
-  width: 15%;
-  text-align: center;
+  width: 10%;
+  text-align: left;
   padding-left: 5%;
 }
 body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .nav-btn {
-  transition: all 0.3s ease-out;
   display: none;
   text-align: center;
   height: 100%;
@@ -132,12 +131,16 @@ body #siteContainer .row-fluid #content-container .entry-container .fixed-header
   color: #ffffff;
   font-weight: 100;
 }
-body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .nav-btn:hover {
-  text-decoration: underline;
-  color: #ffffff;
+body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .nav-btn div {
+  border: 1px solid white;
+  font-weight: 300;
+  transition: all 0.3s ease-out;
+}
+body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .nav-btn:hover div {
+  color: #32873b;
+  background: #ffffff;
 }
 body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .my-next-work {
-  transition: all 0.3s ease-out;
   display: none;
   text-align: center;
   height: 100%;
@@ -150,16 +153,17 @@ body #siteContainer .row-fluid #content-container .entry-container .fixed-header
   line-height: 2em;
   color: #ffffff;
   font-weight: 100;
-}
-body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .my-next-work:hover {
-  text-decoration: underline;
-  color: #ffffff;
 }
 body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .my-next-work div {
-  border-left: 1px solid white;
+  border: 1px solid white;
+  font-weight: 300;
+  transition: all 0.3s ease-out;
+}
+body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .my-next-work:hover div {
+  color: #32873b;
+  background: #ffffff;
 }
 body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .my-prev-work {
-  transition: all 0.3s ease-out;
   display: none;
   text-align: center;
   height: 100%;
@@ -173,12 +177,14 @@ body #siteContainer .row-fluid #content-container .entry-container .fixed-header
   color: #ffffff;
   font-weight: 100;
 }
-body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .my-prev-work:hover {
-  text-decoration: underline;
-  color: #ffffff;
-}
 body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .my-prev-work div {
-  border-right: 1px solid white;
+  border: 1px solid white;
+  font-weight: 300;
+  transition: all 0.3s ease-out;
+}
+body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .my-prev-work:hover div {
+  color: #32873b;
+  background: #ffffff;
 }
 body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .entry-description {
   padding: 0px 20px;
@@ -189,7 +195,7 @@ body #siteContainer .row-fluid #content-container .entry-container .fixed-header
   line-height: 1.6;
 }
 body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .entry-description div {
-  padding-left: 35px;
+  padding-left: 15px;
 }
 body #siteContainer .row-fluid #content-container .entry-container .fixed-header .scroll-menu {
   width: 100%;
@@ -519,10 +525,6 @@ body #siteContainer .row-fluid #content-container .my-work-entry .entry-content 
   box-shadow: 1px 2px 15px #494949;
   transition: all 0.2s ease-out;
 }
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .sub-section {
-  text-decoration: none;
-  cursor: pointer;
-}
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .sub-section .proto-image {
   height: 500px;
 }
@@ -530,14 +532,44 @@ body #siteContainer .row-fluid #content-container .my-work-entry .entry-content 
   color: #545555;
   text-decoration: none;
 }
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .sub-section:hover .prototype-title {
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .sub-section a:hover .prototype-title {
   color: #0080ff;
   text-decoration: underline;
   transition: all 0.2s ease-out;
 }
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .sub-section:hover .proto-image {
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .sub-section a:hover .proto-image {
   transition: all 0.2s ease-out;
   box-shadow: 1px 2px 15px #494949;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .next-work-preview {
+  display: none;
+  position: fixed;
+  bottom: 50px;
+  background: #C9C9C9;
+  border: solid 1px #B3B3B3;
+  height: 150px;
+  width: 240px;
+  cursor: pointer;
+  box-shadow: 0px 1px 2px 2px #c3c1c1;
+  padding: 15px;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .next-work-preview:hover {
+  text-decoration: underline;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .next-work-preview .next-work-header {
+  font-weight: 400;
+  font-size: 20px;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .next-work-preview .next-work-preview-text {
+  padding: 10px;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#prototype .next-work-preview .next-work-preview-img {
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 75%;
 }
 body #siteContainer .row-fluid #content-container .contact {
   color: #545555;

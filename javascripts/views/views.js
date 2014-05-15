@@ -1,6 +1,227 @@
 /**
  * Created with JetBrains WebStorm.
  * User: admin
+ * Date: 3/8/14
+ * Time: 8:53 PM
+ * To change this template use File | Settings | File Templates.
+ */
+var View = Class.extend({
+
+    init: function(template) {
+        this.template = template;
+    },
+
+    replaceTemplateStub: function(stub, content) {
+        return this.template.replace(stub, content);
+    },
+
+    afterShowView: function() {
+
+    }
+});/**
+ * Created with JetBrains WebStorm.
+ * User: admin
+ * Date: 4/27/14
+ * Time: 4:30 PM
+ * To change this template use File | Settings | File Templates.
+ */
+
+var contactView = View.extend({
+    init: function(containerView) {
+        this.containerView = containerView;
+    },
+
+    render: function() {
+        var self = this;
+        self.content = $('<div class="contact content-view"><div class="contact-me">You can contact me via mail in <a class="my-email" target="_blank" href="mailto:benny@beeziko.com">benny@beeziko.com</a>' +
+            '</div><div class="movies-header"><p>It will take me at least 6 seconds to respond.<br>So here is another 6 seconds worth spending:</p></div>' +
+            '<iframe width="420" height="315" src="https://www.youtube.com/embed/rfh4Mhp-a6U" frameborder="0" allowfullscreen></iframe>' +
+            '</div>');
+
+        return self.content;
+    }
+});
+
+/**
+ * Created with JetBrains WebStorm.
+ * User: admin
+ * Date: 3/8/14
+ * Time: 10:25 PM
+ * To change this template use File | Settings | File Templates.
+ */
+
+var contentView = View.extend({
+    init: function(controller) {
+        this.controller = controller;
+
+        this.myWorkModels = [
+            new musicMobModel(),
+            new csiAppModel(),
+            new onlineCVModel()
+        ];
+
+        this.allViews = {
+            'welcomeView' : new welcomeView(this),
+            'contact' : new contactView(),
+            'whoAmI'      : new whoAmIView(this),
+            'myWork'      : new myWorkList(this, this.myWorkModels),
+            'myWorkEntry'      : new myWorkEntry(this, this.getMyWorkData(0))
+        };
+
+        this.currMyWorkItem = 0;
+
+        this.currView = this.allViews.welcomeView;
+    },
+
+    render: function() {
+        $('#content-container').append(this.currView.render());
+    },
+
+    replaceContent: function(toView, animation) {
+        var self = this;
+
+        if(toView == "myWorkEntry") {
+            delete self.allViews["myWorkEntry"];
+            self.allViews["myWorkEntry"] = new myWorkEntry(this, this.getMyWorkData(0));
+            self.currMyWorkItem = 0;
+        }
+
+        var currViewRendered = $('#content-container').children();
+        var oldView = self.currView;
+        self.currView = self.allViews[toView];
+        var newViewRendered = self.currView.render();
+
+        var destroy = function() {
+            if(oldView.destroy) {
+                oldView.destroy();
+            }
+        }
+
+        switch(animation) {
+            case 'fadeOut' :
+               self.fadeReplacement(currViewRendered, newViewRendered, destroy);
+               break;
+            case 'hideLeft':
+                self.hideLeft(currViewRendered, newViewRendered, destroy);
+                break;
+            default:
+                self.fadeReplacement(currViewRendered, newViewRendered, destroy);
+                break;
+        }
+
+        var replacemebtView = (toView == "myWorkEntry")? "myWork" : toView;
+        self.controller.contentViewReplaced(replacemebtView);
+
+        ga('send', 'event', 'viewReplaced', 'nextWorkClicked', toView);
+    },
+
+    myWorkItemClicked: function(workIndex) {
+        var self = this;
+        delete self.allViews["myWorkEntry"];
+        self.allViews["myWorkEntry"] = new myWorkEntry(this, this.getMyWorkData(workIndex));
+        self.currMyWorkItem = workIndex;
+        self.replaceContent("myWorkEntry");
+    },
+
+    showPrevWorkBtn: function() {
+       return (this.currView instanceof myWorkEntry) && this.currMyWorkItem > 0;
+    },
+
+    replaceWorkItem: function(workItemIndex, direction) {
+        var self = this;
+        var workData = this.getMyWorkData(workItemIndex);
+        ga('send', 'event', 'viewReplaced', 'nextWorkClicked', workData.getData().entryName);
+        self.allViews["myWorkEntry"].replaceEntryContent(workData, direction);
+        self.currMyWorkItem = workItemIndex;
+    },
+
+    prevWorkClicked: function() {
+        if(this.currMyWorkItem > 0)
+        {
+            this.replaceWorkItem(this.currMyWorkItem - 1, "right");
+        }
+    },
+
+    getNextWorkData: function() {
+        var data = null;
+        if(this.currMyWorkItem < this.myWorkModels.length-1) {
+            var self = this;
+            data = self.getMyWorkData(self.currMyWorkItem + 1);
+        }
+        return data;
+    },
+
+
+    nextWorkClicked: function() {
+        if(this.currMyWorkItem < this.myWorkModels.length-1)
+        {
+            this.replaceWorkItem(this.currMyWorkItem + 1, "left");
+        }
+    },
+
+    showNextWorkBtn: function() {
+        return (this.currView instanceof myWorkEntry) && this.currMyWorkItem < this.myWorkModels.length-1;
+    },
+
+    fadeReplacement: function(currView, nextView, cb) {
+        var self = this;
+        nextView.css("display", "none");
+        currView.fadeOut(300, function() {
+            $('#content-container').children().remove();
+            $('#content-container').append(nextView);
+
+            $(document.body).scrollTop(0);
+            nextView.fadeIn(300, function() {
+                cb();
+            });
+            if(self.currView.afterShowView)
+            {
+                self.currView.afterShowView();
+            }
+        });
+    },
+
+    hideLeft: function(currView, nextView, cb) {
+        var self = this;
+        var container = $('#content-container');
+        container.css({"overflow-x" : "hidden"});
+        var contentViewWidth = container.width();
+        nextView.hide().css({left: contentViewWidth});
+        container.append(nextView);
+        currView.animate({left: -contentViewWidth}, 300, "linear", function() {
+            currView.remove();
+            cb();
+            container.css({"overflow-x" : "visible"});
+        });
+
+
+        nextView.show(function() {
+        });
+        nextView.animate({left: 0}, 300, "linear", function () {
+            if(self.currView.afterShowView)
+            {
+                self.currView.afterShowView();
+            }
+        });
+    },
+
+    hideRight: function(callback) {
+        var prevLeft = this.position().left;
+        this.css({position:"relative"});
+        this.animate({left: this.position().left + this.width()*1.5}, 300, "swing", function() {
+            this.hide();
+            this.css({left: prevLeft});
+            callback();
+        })
+    },
+
+    getMyWorkData: function(modelIndex) {
+        return this.myWorkModels[modelIndex];
+    }
+});
+/**
+ * Created with JetBrains WebStorm.
+ * User: admin
  * Date: 3/10/14
  * Time: 1:35 PM
  * To change this template use File | Settings | File Templates.
@@ -413,5 +634,241 @@ var myWorkEntry = View.extend({
 
     destroy: function() {
         $(window).unbind('scroll');
+    }
+});
+/**
+ * Created with JetBrains WebStorm.
+ * User: admin
+ * Date: 3/10/14
+ * Time: 10:38 AM
+ * To change this template use File | Settings | File Templates.
+ */
+
+var myWorkList = View.extend({
+    init: function(container, myWorkModels) {
+        this.container = container;
+        this.myWorkModels =  myWorkModels;
+    },
+
+    render: function() {
+        var self = this;
+        self.content = $("<div class='my-work-list content-view'></div>");
+        $.each(self.myWorkModels, function(index, modelValue) {
+           var row = $("<div class='row work-entry'><div class='span3'><div class='my-work-preview-img'><img src='" + modelValue.getData().entryImage +
+               "'></div></div><div class='span9'><div class='entry-header'>" + modelValue.getData().displayName +
+               "</div><div class='my-work-preview-text'>" + modelValue.getData().entryDescription + "</div></div></div>");
+            row.click(function() {
+               self.container.myWorkItemClicked(index);
+            });
+            self.content.append(row);
+        });
+
+        return self.content;
+    }
+});
+/**
+ * Created with JetBrains WebStorm.
+ * User: admin
+ * Date: 3/8/14
+ * Time: 9:00 PM
+ * To change this template use File | Settings | File Templates.
+ */
+
+var sideBar = View.extend({
+   init: function(controller) {
+       this.controller = controller;
+       this.template = '<div id="sidebar"><div class="line"></div><div class="myName">Benny Zingerevich<p>UX Designer</p></div><div class="menu"></div></div>';
+   },
+
+    render: function(element) {
+        var self = this;
+        this.sidebarMenu = new sideBarMenu({
+            whoAmI: {
+                click: function() {
+                    self.controller.replaceContentView("whoAmI");
+                },
+                text: "Who Am I"
+            },
+            myWork: {
+                click: function() {
+                    self.controller.replaceContentView("myWorkEntry");
+                },
+                text: "My Work"
+            },
+            contact: {
+                click: function() {
+                    self.controller.replaceContentView("contact");
+                },
+                text: "Contact"
+            }
+        });
+
+        this.content = $(self.template);
+        $('.menu', this.content).append(this.sidebarMenu.render());
+        $(element).append(this.content);
+
+        $('.myName', this.content).click(function() {
+            self.controller.replaceContentView("welcomeView");
+            self.hideMenu();
+        });
+    },
+
+    hideMenu: function () {
+      $('.menu', this.content).fadeOut(0);
+    },
+
+    showMenu: function (selectedView) {
+        var self = this;
+
+        if($('.menu').is(":hidden")){
+            $('.menu', this.content).fadeIn();
+        }
+
+        if(selectedView) {
+            self.setSelectedMenu(selectedView);
+        }
+    },
+
+    setSelectedMenu: function(menuItemName){
+        this.sidebarMenu.setSelected(menuItemName)
+    },
+
+    minimize: function() {
+
+    },
+
+    minimizedClicked: function() {
+
+    }
+});
+/**
+ * Created with JetBrains WebStorm.
+ * User: admin
+ * Date: 3/8/14
+ * Time: 9:14 PM
+ * To change this template use File | Settings | File Templates.
+ */
+
+/**
+ * Created with JetBrains WebStorm.
+ * User: admin
+ * Date: 3/8/14
+ * Time: 9:00 PM
+ * To change this template use File | Settings | File Templates.
+ */
+
+var sideBarMenu = View.extend({
+    init: function(menuItems) {
+        this.menuItems = menuItems;
+    },
+
+    render: function() {
+        var self = this;
+        var menus = $("<div></div>");
+        var mItem;
+        for (var item in self.menuItems) {
+            mItem = $("<div class='mItem'>" + self.menuItems[item].text + "<div class='selectionbar'></div></div>");
+            mItem.attr("id", item);
+            mItem.click(function(){
+                $('.mItem').removeClass('selected');
+                $(this).addClass('selected');
+                self.menuItems[$(this).attr('id')].click();
+            });
+            menus.append(mItem);
+        }
+        $('.mItem', menus).first().addClass('selected');
+        return menus;
+    },
+
+    setSelected: function(menuItemName) {
+        var menuItem = $('#' + menuItemName);
+        if(menuItem && this.menuItems[menuItemName]) {
+            $('.mItem').removeClass('selected');
+            menuItem.addClass('selected');
+        }
+    }
+});
+
+/**
+ * Created with JetBrains WebStorm.
+ * User: admin
+ * Date: 3/8/14
+ * Time: 10:34 PM
+ * To change this template use File | Settings | File Templates.
+ */
+
+var welcomeView = View.extend({
+    init: function(containerView) {
+        this.containerView = containerView;
+    },
+
+    render: function() {
+        var self = this;
+        self.content = $('<div class="lp content-view"><div class="opening-quote">&quot;Everything that is beautiful and noble is the product of reason and calculation.&quot;</div>' +
+        '<div class="source">Charles Baudelaire</div><div class="buttons-container"><div class="btnContainer left">' +
+        '<div id="blue-btn-welcome" class="inline-btn blue-btn">Who Am I</div></div><div class="btnContainer">' +
+        '<div id="red-btn-welcome" class="inline-btn red-btn">My Work</div></div></div></div>');
+
+        $('.blue-btn', self.content).click(function () {
+            self.containerView.replaceContent("whoAmI");
+        });
+
+        $('.red-btn', self.content).click(function () {
+            self.containerView.myWorkItemClicked(0);
+        });
+        return self.content;
+    }
+});
+/**
+ * Created with JetBrains WebStorm.
+ * User: admin
+ * Date: 3/5/14
+ * Time: 8:15 PM
+ * To change this template use File | Settings | File Templates.
+ */
+
+var whoAmIView = View.extend({
+
+    myResume:
+    {
+        experience: {
+            header: "Experience",
+            entryContent: "<p>I am a UX Designer and a web developer.</p><p>I have been UXing for the past 5 years, and coding " +
+                    'for the past 7.</p><p>I was a co-founder and Chief product officer of beeziko LTD (an Ed Tech startup).</p>' +
+                    "<p>I worked as a front-end web developer @ Pluralis LTD. and as a front-end Developer @ CheckPoint Software Technologies.</p>"
+        },
+
+        skills: {
+            header: "Skills",
+            entryContent: "<div class='skill'><div class='skill-name'>UX Design</div><div>&#10029;&#10029;&#10029;&#10029;&#10029;</div></div>" +
+                "<div class='skill'><div class='skill-name'>Code</div><div>&#10029;&#10029;&#10029;&#10029;&#10029;</div></div>" +
+                "<div class='skill'><div class='skill-name'>Graphic Design</div><div>&#10029;&#10029;&#10025;&#10025;&#10025;</div></div>"
+        },
+
+        education: {
+            header: "Education",
+            entryContent: "<p>UXV Certification course by Tal Florentin</p>" +
+                "<p>Ben Gurion University : B.Sc Computer Science</p>" +
+                "<p>Ben Gurion University : B.Sc Chemistry</p>"
+        }
+    },
+
+    init: function(container) {
+        this.container = container;
+    },
+
+    render: function() {
+        var self = this;
+        self.content =  $("<div class='my-resume content-view'><div class='myProfile'><div class='myImage'></div><div class='links'>" +
+            "<a href='http://il.linkedin.com/pub/benny-zingerevich/38/102/164/' target='_blank'>LinkedIn Profile</a>" +
+            "<a href='./files/benny_cv.pdf' download='benny_cv.pdf'>Download Print Version</a></div></div></div>");
+        $.each(self.myResume, function(entryName, entryValue) {
+            var entry = $("<div class='resumeEntry'><div class='header'> " +
+                entryValue.header + "</div><div class='content'>" +
+                entryValue.entryContent + "</div></div>");
+
+            self.content.append(entry);
+        });
+        return self.content;
     }
 });
