@@ -124,7 +124,7 @@ body{
          height: 100%;
 
           .fixed-header {
-            height: @fixed-header-height;
+            padding-bottom: 5px;
             position: fixed;
             width: 78%;
             box-shadow: 0px 1px 4px rgb(163, 163, 163);
@@ -133,53 +133,46 @@ body{
 
             .entryDetails {
               width: 100%;
-              height: 90px;
+              min-height: 70px;
+              padding: 10px 0px;
               background-color: @bz-green;
               color: white;
-              display: table;
+              padding: 1% 2%;
+
 
               .entry-name {
-                font-size: 2.2em;
-                display: table-cell;
-                height: 100%;
-                font-weight: 300;
+                display: inline-block;
                 vertical-align: middle;
-                width: 10%;
+                font-size: 2.2vw;
+                height: 100%;
+                font-weight: 400;
                 text-align: left;
-                padding-left: 5%;
+                padding: 0 1% 0 2%;
+
               }
 
               .nav-btn {
-                display: none;
+                display: inline-block;
                 text-align: center;
                 height: 100%;
                 font-weight: 300;
-                vertical-align: middle;
-                font-size: 1.2em;
+                font-size: 1.4vw;
                 cursor: pointer;
-                width: 15%;
                 padding: 0px 10px;
                 line-height: 2em;
                 color: #ffffff;
                 font-weight: 100;
-
-                div {
-                  border: 1px solid white;
-                  font-weight: 300;
-                  transition: all 0.3s ease-out;
-                }
+                border: 1px solid white;
+                font-weight: 300;
+                transition: all 0.3s ease-out;
 
                 &:hover {
-
-                  div {
                     color: @bz-green;
                     background: #ffffff;
-                  }
                 }
               }
               .my-next-work {
                 .nav-btn;
-
               }
 
               .my-prev-work {
@@ -187,45 +180,44 @@ body{
               }
 
               .entry-description {
+                display: inline-block;
 
-                padding: 0px 20px;
-                font-size: 1em;
-                display: table-cell;
+                @media all and (max-width: 768px) {
+                  width: 40%;
+                }
+                width: 60%;
+                font-size: 1.4vw;
                 vertical-align: middle;
                 font-weight: 200;
                 line-height: 1.6;
+                padding: 0 2%;
 
                 div {
-                  padding-left: 15px;
                 }
               }
           }
 
           .scroll-menu {
-            width: 100%;
-            ul {
-              width: 100%;
-              margin: 0;
-              padding: 0;
-              display: flex;
-              flex-wrap: wrap;
-              justify-content: space-around;
-              list-style: none;
+            padding: 1rem 0;
+
+            .menu-item {
+              cursor: pointer;
+              font-size: 1.4em;
+              text-align: center;
+              transition: all 0.3s ease-out;
 
               a {
-                cursor: pointer;
-                transition: all 0.3s ease-out;
-                padding: 1.25rem 0.5rem;
-                font-size: 1.6rem;
-                max-width: 250px;
-                font-weight: 300;
+                padding: 1rem 0;
                 text-decoration: none;
-                display: flex;
-                align-items: flex-start;
-                border-bottom: 4px solid transparent;
+                text-align: center;
+                border-bottom: 5px solid transparent;
 
                 &.selected {
-                  border-bottom: 4px solid @bz-red;
+                  border-bottom: 5px solid @bz-red;
+                }
+
+                &:hover:not(.selected) {
+                  border-bottom: 5px solid #FFD3D3;
                 }
               }
               .icon {
@@ -553,10 +545,15 @@ body{
 
               &#nav-model{
                 .screen-flow-details {
-                  width: 70%;
-                  .nav-image {
+                  width: 80%;
+                  .nav-image-link {
                     cursor: pointer;
-                    height: 600px;
+                    width: inherit;
+
+                    img {
+                      width: inherit;
+                      height: inherit;
+                    }
 
                     &:hover {
                         box-shadow: 1px 2px 15px rgb(73, 73, 73);
@@ -568,8 +565,8 @@ body{
 
               &#wireframes{
                .conclusion-wireframe {
-                 padding: 60px 40px;
                  color: @bz-txt-gray;
+                 padding-top: 50px;
 
                  &.firstRow {
                    padding-top: 20px;
@@ -577,30 +574,49 @@ body{
                   .arrow {
                     position: relative;
                     top: 50px;
-                    padding: 30px;
-                    font-size: 5rem;
+                    font-size: 5vw;
                     text-align: center;
                   }
 
-                  .light-bulb {
-                    width: 250px;
-                    height: 400px;
+                  .conclusion {
+                    position: relative;
+                    height: 100%;
 
                     .conclusion-details {
+                      padding-top: 20%;
                       text-align: center;
-                      width: 65%;
-                      font-size: 1.3rem;
+                      width: 50%;
+                      font-size: 1.6vw;
                       text-align: center;
+                      margin: 0 auto;
+                      position: absolute;
+                      left: 25%;
+                    }
+
+                    img.solution {
+                      width: 100%;
                     }
                   }
 
-                 .wireframe-image {
-                   cursor: pointer;
-                   height: 400px;
+                 .wire-container {
+                   top: 2%;
+                   position: relative;
 
-                   &:hover {
-                     box-shadow: 1px 2px 15px rgb(73, 73, 73);
-                     transition: all 0.2s ease-out;
+                   a {
+                     width: inherit;
+                     .wireframe-image {
+                       cursor: pointer;
+                       width: inherit;
+
+                       position: relative;
+                       left: 20%;
+
+
+                       &:hover {
+                         box-shadow: 1px 2px 15px rgb(73, 73, 73);
+                         transition: all 0.2s ease-out;
+                       }
+                     }
                    }
                  }
                }
@@ -691,6 +707,9 @@ body{
             }
           }
 
+          iframe {
+            border: 6px solid @bz-txt-gray;
+          }
         }
       }
     }

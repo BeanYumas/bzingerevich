@@ -1,7 +1,4 @@
-ren views.js views.temp
 ren views.min.js views.min.temp
 
 type *.js >> views.temp
 
-ren views.tmp views.js
-ren views.min.temp views.min.js

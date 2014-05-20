@@ -106,21 +106,22 @@ var myWorkEntry = View.extend({
         var wireFrames = this.model.getData().wireframes;
         var contents = $("<div class='container-fluid'></div>");
         $.each(wireFrames.content, function(index, content) {
-            var row = $("<div class='row conclusion-wireframe'><div class='span4 light-bulb'><p class='conclusion-details'>" + conclusions[index] + "</p></div>" +
-                "<div class='span3 arrow'>&RightArrow;</div>" +
-                "<div class='span5'><img class='wireframe-image' src='" + content.image + "'></div></div>" +
+            var row = $("<div class='row-fluid conclusion-wireframe'><div class='span5 conclusion'><p class='conclusion-details'>" + conclusions[index] + "</p>" +
+                "<img class='solution'></div>" +
+                "<div class='span1 arrow'>&RightArrow;</div>" +
+                "<div class='span6 wire-container'><img class='wireframe-image' src='" + content.image + "'></div></div>" +
                 "</div>");
-            var solution = $('.light-bulb', row);
+            var solution = $('.solution', row);
             switch(index%3) {
                 case 0:
                     row.addClass('firstRow');
-                    solution.addClass('blue-conclusion');
+                    solution.attr("src", './images/blue_light_bulb.svg');
                     break;
                 case 1:
-                    solution.addClass('red-conclusion');
+                    solution.attr("src", './images/red_light_bulb.svg');
                     break;
                 case 2:
-                    solution.addClass('green-conclusion');
+                    solution.attr("src", './images/green_light_bulb.svg');
                     break;
             }
             contents.append(row)
@@ -184,7 +185,7 @@ var myWorkEntry = View.extend({
         $('.nav-image').wrap("<a class='fancybox nav-image-link' rel='group' href='" + navModel.image +"'</a>");
 
         $('.wireframe-image').each(function(index, element) {
-            $(element).wrap("<a class='fancybox' rel='group' href='" + element.src +"'</a>");
+            $(element).wrap("<a class='fancybox' rel='group' href='" + element.src +"'></a>");
         });
 
         $(".fancybox").fancybox(
@@ -284,11 +285,11 @@ var myWorkEntry = View.extend({
 
     addHeader: function() {
         var header = $("<div class='fixed-header'>" +
-            "<nav role='navigation' class='scroll-menu'><ul>" +
-            "<li class='menu-item'><a class='selected' scrollTo='research'>Research</a></li>" +
-            "<li class='menu-item'><a scrollTo='nav-model'>Navigation Model</a></li>" +
-            "<li class='menu-item'><a scrollTo='wireframes'>Wireframes</a></li>" +
-            "<li class='menu-item'><a scrollTo='prototype'>Prototype</a></li>" +
+            "<div class='row-fluid scroll-menu'>" +
+            "<div class='span3 menu-item'><a class='selected' scrollTo='research'>Research</a></div>" +
+            "<div class='span3 menu-item'><a scrollTo='nav-model'>Navigation Model</a></div>" +
+            "<div class='span3 menu-item'><a scrollTo='wireframes'>Wireframes</a></div>" +
+            "<div class='span3 menu-item'><a scrollTo='prototype'>Prototype</a></div>" +
         "</ul></nav></div>");
 
         this.currSection = 0;
@@ -313,7 +314,7 @@ var myWorkEntry = View.extend({
         var nextBtn = $(".my-next-work", headerToFill);
         if(nextBtn) {
             if (this.container.showNextWorkBtn()) {//there is a next button
-                nextBtn.css('display', 'table-cell');
+                nextBtn.css('display', 'inline-block');
                 nextBtn.off("click");
                 nextBtn.click(function () {
                     self.container.nextWorkClicked.call(self.container)
@@ -329,8 +330,7 @@ var myWorkEntry = View.extend({
         if(prevBtn)
         {
             if (this.container.showPrevWorkBtn()) {//there is a next button
-                prevBtn.css('display', 'table-cell');
-                $('.entry-name', headerToFill).css('padding-left', '30px');
+                prevBtn.css('display', 'inline-block');
                 prevBtn.off("click");
                 prevBtn.click(function () {
                     self.container.prevWorkClicked.call(self.container)
@@ -338,7 +338,6 @@ var myWorkEntry = View.extend({
             }
             else {
                 prevBtn.css('display', 'none');
-                $('.entry-name', headerToFill).css('padding-left', '5%');
             }
         }
     },

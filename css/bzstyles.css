@@ -93,7 +93,7 @@ body #siteContainer .row-fluid #content-container .entry-container {
   height: 100%;
 }
 body #siteContainer .row-fluid #content-container .entry-container .fixed-header {
-  height: 160px;
+  padding-bottom: 5px;
   position: fixed;
   width: 78%;
   box-shadow: 0px 1px 4px #a3a3a3;
@@ -102,129 +102,111 @@ body #siteContainer .row-fluid #content-container .entry-container .fixed-header
 }
 body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails {
   width: 100%;
-  height: 90px;
+  min-height: 70px;
+  padding: 10px 0px;
   background-color: #32873b;
   color: white;
-  display: table;
+  padding: 1% 2%;
 }
 body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .entry-name {
-  font-size: 2.2em;
-  display: table-cell;
-  height: 100%;
-  font-weight: 300;
+  display: inline-block;
   vertical-align: middle;
-  width: 10%;
+  font-size: 2.2vw;
+  height: 100%;
+  font-weight: 400;
   text-align: left;
-  padding-left: 5%;
+  padding: 0 1% 0 2%;
 }
 body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .nav-btn {
-  display: none;
+  display: inline-block;
   text-align: center;
   height: 100%;
-  font-weight: 300;
-  vertical-align: middle;
-  font-size: 1.2em;
+  font-size: 1.4vw;
   cursor: pointer;
-  width: 15%;
   padding: 0px 10px;
   line-height: 2em;
   color: #ffffff;
   font-weight: 100;
-}
-body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .nav-btn div {
   border: 1px solid white;
   font-weight: 300;
   transition: all 0.3s ease-out;
 }
-body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .nav-btn:hover div {
+body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .nav-btn:hover {
   color: #32873b;
   background: #ffffff;
 }
 body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .my-next-work {
-  display: none;
+  display: inline-block;
   text-align: center;
   height: 100%;
-  font-weight: 300;
-  vertical-align: middle;
-  font-size: 1.2em;
+  font-size: 1.4vw;
   cursor: pointer;
-  width: 15%;
   padding: 0px 10px;
   line-height: 2em;
   color: #ffffff;
   font-weight: 100;
-}
-body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .my-next-work div {
   border: 1px solid white;
   font-weight: 300;
   transition: all 0.3s ease-out;
 }
-body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .my-next-work:hover div {
+body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .my-next-work:hover {
   color: #32873b;
   background: #ffffff;
 }
 body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .my-prev-work {
-  display: none;
+  display: inline-block;
   text-align: center;
   height: 100%;
-  font-weight: 300;
-  vertical-align: middle;
-  font-size: 1.2em;
+  font-size: 1.4vw;
   cursor: pointer;
-  width: 15%;
   padding: 0px 10px;
   line-height: 2em;
   color: #ffffff;
   font-weight: 100;
-}
-body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .my-prev-work div {
   border: 1px solid white;
   font-weight: 300;
   transition: all 0.3s ease-out;
 }
-body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .my-prev-work:hover div {
+body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .my-prev-work:hover {
   color: #32873b;
   background: #ffffff;
 }
 body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .entry-description {
-  padding: 0px 20px;
-  font-size: 1em;
-  display: table-cell;
+  display: inline-block;
+  width: 60%;
+  font-size: 1.4vw;
   vertical-align: middle;
   font-weight: 200;
   line-height: 1.6;
+  padding: 0 2%;
 }
-body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .entry-description div {
-  padding-left: 15px;
+@media all and (max-width: 768px) {
+  body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .entry-description {
+    width: 40%;
+  }
 }
 body #siteContainer .row-fluid #content-container .entry-container .fixed-header .scroll-menu {
-  width: 100%;
+  padding: 1rem 0;
 }
-body #siteContainer .row-fluid #content-container .entry-container .fixed-header .scroll-menu ul {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  list-style: none;
-}
-body #siteContainer .row-fluid #content-container .entry-container .fixed-header .scroll-menu ul a {
+body #siteContainer .row-fluid #content-container .entry-container .fixed-header .scroll-menu .menu-item {
   cursor: pointer;
+  font-size: 1.4em;
+  text-align: center;
   transition: all 0.3s ease-out;
-  padding: 1.25rem 0.5rem;
-  font-size: 1.6rem;
-  max-width: 250px;
-  font-weight: 300;
+}
+body #siteContainer .row-fluid #content-container .entry-container .fixed-header .scroll-menu .menu-item a {
+  padding: 1rem 0;
   text-decoration: none;
-  display: flex;
-  align-items: flex-start;
-  border-bottom: 4px solid transparent;
+  text-align: center;
+  border-bottom: 5px solid transparent;
 }
-body #siteContainer .row-fluid #content-container .entry-container .fixed-header .scroll-menu ul a.selected {
-  border-bottom: 4px solid #ff6666;
+body #siteContainer .row-fluid #content-container .entry-container .fixed-header .scroll-menu .menu-item a.selected {
+  border-bottom: 5px solid #ff6666;
 }
-body #siteContainer .row-fluid #content-container .entry-container .fixed-header .scroll-menu ul .icon {
+body #siteContainer .row-fluid #content-container .entry-container .fixed-header .scroll-menu .menu-item a:hover:not(.selected) {
+  border-bottom: 5px solid #FFD3D3;
+}
+body #siteContainer .row-fluid #content-container .entry-container .fixed-header .scroll-menu .menu-item .icon {
   width: 40px;
   height: 40px;
   float: left;
@@ -484,19 +466,23 @@ body #siteContainer .row-fluid #content-container .my-work-entry .entry-content 
   height: 340px;
 }
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#nav-model .screen-flow-details {
-  width: 70%;
+  width: 80%;
 }
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#nav-model .screen-flow-details .nav-image {
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#nav-model .screen-flow-details .nav-image-link {
   cursor: pointer;
-  height: 600px;
+  width: inherit;
 }
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#nav-model .screen-flow-details .nav-image:hover {
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#nav-model .screen-flow-details .nav-image-link img {
+  width: inherit;
+  height: inherit;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#nav-model .screen-flow-details .nav-image-link:hover {
   box-shadow: 1px 2px 15px #494949;
   transition: all 0.2s ease-out;
 }
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#wireframes .conclusion-wireframe {
-  padding: 60px 40px;
   color: #545555;
+  padding-top: 50px;
 }
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#wireframes .conclusion-wireframe.firstRow {
   padding-top: 20px;
@@ -504,24 +490,39 @@ body #siteContainer .row-fluid #content-container .my-work-entry .entry-content 
 body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#wireframes .conclusion-wireframe .arrow {
   position: relative;
   top: 50px;
-  padding: 30px;
-  font-size: 5rem;
+  font-size: 5vw;
   text-align: center;
 }
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#wireframes .conclusion-wireframe .light-bulb {
-  width: 250px;
-  height: 400px;
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#wireframes .conclusion-wireframe .conclusion {
+  position: relative;
+  height: 100%;
 }
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#wireframes .conclusion-wireframe .light-bulb .conclusion-details {
-  width: 65%;
-  font-size: 1.3rem;
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#wireframes .conclusion-wireframe .conclusion .conclusion-details {
+  padding-top: 20%;
+  width: 50%;
+  font-size: 1.6vw;
   text-align: center;
+  margin: 0 auto;
+  position: absolute;
+  left: 25%;
 }
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#wireframes .conclusion-wireframe .wireframe-image {
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#wireframes .conclusion-wireframe .conclusion img.solution {
+  width: 100%;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#wireframes .conclusion-wireframe .wire-container {
+  top: 2%;
+  position: relative;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#wireframes .conclusion-wireframe .wire-container a {
+  width: inherit;
+}
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#wireframes .conclusion-wireframe .wire-container a .wireframe-image {
   cursor: pointer;
-  height: 400px;
+  width: inherit;
+  position: relative;
+  left: 20%;
 }
-body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#wireframes .conclusion-wireframe .wireframe-image:hover {
+body #siteContainer .row-fluid #content-container .my-work-entry .entry-content section#wireframes .conclusion-wireframe .wire-container a .wireframe-image:hover {
   box-shadow: 1px 2px 15px #494949;
   transition: all 0.2s ease-out;
 }
@@ -588,4 +589,7 @@ body #siteContainer .row-fluid #content-container .contact .contact-me.movies-he
 body #siteContainer .row-fluid #content-container .contact .movies-header.movies-header {
   line-height: 3vw;
   padding-top: 50px;
+}
+body #siteContainer .row-fluid #content-container .contact iframe {
+  border: 6px solid #545555;
 }
