@@ -12,7 +12,7 @@ var musicMobModel = baseModel.extend({
         this.data = {
             entryName:   "MusicMob",
             displayName: "MusicMob",
-            entryDescription: "MusicMob is where everyone is a DJ.<br>When music is playing via MusicMob, you can add songs to the playlist, or upvote songs that others have added.",
+            entryDescription: "When the party owner plays music using the MusicMob app, you can add songs to the playlist and vote for songs using your iPhone MusicMob app.",
             entryImage: "./images/MusicMob_preview.png",
             research: {
                 businessGoals: [

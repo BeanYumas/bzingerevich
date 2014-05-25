@@ -12,6 +12,7 @@ var contentView = View.extend({
 
         this.myWorkModels = [
             new musicMobModel(),
+            new antiProjWebsiteModel(),
             new csiAppModel(),
             new onlineCVModel()
         ];

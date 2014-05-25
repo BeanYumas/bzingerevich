@@ -116,6 +116,8 @@ body #siteContainer .row-fluid #content-container .entry-container .fixed-header
   font-weight: 400;
   text-align: left;
   padding: 0 1% 0 2%;
+  word-wrap: break-word;
+  width: 17%;
 }
 body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .nav-btn {
   display: inline-block;
@@ -173,7 +175,7 @@ body #siteContainer .row-fluid #content-container .entry-container .fixed-header
 }
 body #siteContainer .row-fluid #content-container .entry-container .fixed-header .entryDetails .entry-description {
   display: inline-block;
-  width: 60%;
+  width: 47%;
   font-size: 1.4vw;
   vertical-align: middle;
   font-weight: 200;

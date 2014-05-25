@@ -10,10 +10,10 @@ var csiAppModel = baseModel.extend({
 
     init: function() {
         this.data = {
-            entryName: "CSI",
+            entryName: "CSI iPhone App",
             displayName: "CSI iPhone App",
-            entryDescription: "With the CSI iPhone App, the investigator's life is much easier." +
-                "She can manage her crime scenes, collect evidence and photos in an organized manner, and all on her iPhone.",
+            entryDescription: "With the CSI iPhone App the investigator " +
+                "can manage her crime scenes, collect evidence and photos in an organized manner, and all on her iPhone.",
             entryImage: "./images/csi_preview.png",
             research: {
                 businessGoals: [
