@@ -112,9 +112,9 @@ var myWorkEntry = View.extend({
                 "<div class='span6 wire-container'><img class='wireframe-image' src='" + content.image + "'></div></div>" +
                 "</div>");
             var solution = $('.solution', row);
+            index === 0? row.addClass('firstRow'): null;
             switch(index%3) {
                 case 0:
-                    row.addClass('firstRow');
                     solution.attr("src", './images/blue_light_bulb.svg');
                     break;
                 case 1:

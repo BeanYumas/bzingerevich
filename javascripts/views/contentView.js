@@ -14,8 +14,11 @@ var contentView = View.extend({
             new musicMobModel(),
             new antiProjWebsiteModel(),
             new csiAppModel(),
+            new superDbQueryModel(),
             new onlineCVModel()
         ];
+
+        this.alreadyViewdWork = false;
 
         this.allViews = {
             'welcomeView' : new welcomeView(this),
@@ -37,10 +40,15 @@ var contentView = View.extend({
     replaceContent: function(toView, animation) {
         var self = this;
 
-        if(toView == "myWorkEntry") {
+        self.controller.contentViewReplaced(toView);
+        ga('send', 'event', 'viewReplaced', 'nextWorkClicked', toView);
+
+        if(toView == "myWork" && !self.alreadyViewdWork) {//first time mywork is clicked
             delete self.allViews["myWorkEntry"];
             self.allViews["myWorkEntry"] = new myWorkEntry(this, this.getMyWorkData(0));
             self.currMyWorkItem = 0;
+            self.alreadyViewdWork = true;
+            toView = "myWorkEntry";
         }
 
         var currViewRendered = $('#content-container').children();
@@ -65,11 +73,6 @@ var contentView = View.extend({
                 self.fadeReplacement(currViewRendered, newViewRendered, destroy);
                 break;
         }
-
-        var replacemebtView = (toView == "myWorkEntry")? "myWork" : toView;
-        self.controller.contentViewReplaced(replacemebtView);
-
-        ga('send', 'event', 'viewReplaced', 'nextWorkClicked', toView);
     },
 
     myWorkItemClicked: function(workIndex) {

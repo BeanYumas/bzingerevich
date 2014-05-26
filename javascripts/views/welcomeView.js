@@ -23,7 +23,7 @@ var welcomeView = View.extend({
         });
 
         $('.red-btn', self.content).click(function () {
-            self.containerView.myWorkItemClicked(0);
+            self.containerView.replaceContent("myWork");
         });
         return self.content;
     }
